@@ -1,1 +1,3 @@
-To run this application you need a database named jQuery_workshop
+Setup instructions:
+1 - Chmod 777 your core/db folder
+2 - Point the browser to core/setup

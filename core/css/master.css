@@ -1,0 +1,52 @@
+body {
+    font-family: helvetica;
+}
+
+#body_container {
+    margin-bottom: 30px;
+    height: 400px;
+}
+
+#body_container table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+#copyright {
+    float: right;
+}
+
+#error {
+    padding: 10px;
+    background-color: #FFAAAA;
+    border: 1px solid #FF0000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#success {
+    padding: 10px;
+    background-color: #AAFFAA;
+    border: 1px solid #00FF00;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.movie_title {
+    width: 200px;
+}
+.movie_description {
+    width: 500px;
+}
+.movie_trailer {
+    width: 100px;
+}
+.movie_image {
+    width: 100px;
+}
+
+.movie_delete a {
+    text-decoration: none;
+    color: #FF0000;
+}
