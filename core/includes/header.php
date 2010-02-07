@@ -7,5 +7,5 @@
 </head>
 
 <body>
-    <h1>Movie DB</h1>
+    <h1>Movie Store</h1>
     <div id="body_container">
