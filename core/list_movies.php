@@ -1,3 +1,4 @@
+
 <?php
 include('includes/config.php');
 
@@ -10,6 +11,12 @@ $films = $db->query('SELECT * FROM movies');
 # ---- TEMPLATE START ----
 ?>
     <?php include('includes/header.php'); ?>
+		<link rel="stylesheet" href="css/overlay-apple.css" type="text/css" media="screen">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/jquery-tools.js"></script>
+		<script type="text/javascript" src="js/list_movies.js"></script>
+
     <?php if($_GET['err'] == 1) { ?>
         <div id="error">Unable to perform the requested action</div>
     <?php } ?>
@@ -19,25 +26,53 @@ $films = $db->query('SELECT * FROM movies');
     <?php if($_GET['deleted']) { ?>
         <div id="success">Movie successfully deleted</div>
     <?php } ?>
-    <table>
-        <tr>
-            <th class="movie_title">Title</th>
-            <th class="movie_description">Description</th>
-            <th class="movie_trailer">Trailer</th>
-            <th class="movie_image">Image</th>
-            <th class="movie_image"></th>
-        </tr>
-        <?php while($film = $films->fetchArray()) { ?>
-        <tr class="movie_row">
-            <td class="movie_title"><?php echo $film['title'] ?></td>
-            <td class="movie_description"><?php echo $film['description'] ?></td>
-            <td class="movie_trailer"><?php echo $film['trailer_url'] ?></td>
-            <td class="movie_image"><?php echo $film['image'] ?></td>
-            <td class="movie_delete"><a href="delete_movie.php?movie_id=<?php echo $film['id'] ?>">x</a></td>
-        </tr>
+	
+	<!--cestino per il trscinamento dei film-->
+		<div class="trash">
+		  <span>trascina qui i film che vuoi acquistare</span>
+		  <span>Film acquistati:</span><span class="count">0</span>
+		</div>
+	
+	<!--tabella principale-->	
+    <div class="movie_table">
+        <ul class="movie_thead">
+            <li class="movie_title">Title</li>
+            <li class="movie_description">Description</li>
+            <li class="movie_trailer">Trailer</li>
+            <li class="movie_image">Image</li>
+        </ul>
+        <?php while($film = $films->fetchArray(SQLITE3_ASSOC)) { ?>
+        <ul class="movie_drag">
+            <li class="movie_title"><?php echo $film['title'] ?></li>
+            <li class="movie_description"><?php echo $film['description'] ?></li>
+            <li class="movie_trailer"><?php echo $film['trailer_url'] ?></li>
+            <li class="movie_image"><?php echo $film['image'] ?></li>
+            <li class="movie_del"><a href="delete_movie.php?movie_id=<?php echo $film['id'] ?>">x</a></li>
+        </ul>
         <?php } ?>
-    </table>
-    <a href="add_movie.php">Add new movie</a>
+    </div>
+    <a id="new_movie" href="add_movie.php" rel="#overlay">Add new movie</a>
+	
+	<!-- overlayed element --> 
+    <div class="apple_overlay" id="overlay"> 
+ 
+      <!-- the external content is loaded inside this tag --> 
+      <div class="contentWrap"></div> 
+ 
+    </div>
+	
+	<!--error ajax overlay -->
+	<div id="ajax_error">
+		<div>
+			<h2>Errore</h2>
+			<p id="errror_desc">errrore imprevisto</p>
+			<button class="close">Chiudi</button>
+		</div>
+  </div>
+   
+	<!--ajax loading image-->
+	<img src='./img/ajax-loader.gif' class="ajax-loader"></img>
+	
     <?php include('includes/footer.php'); ?>
 <?php
 # ---- TEMPLATE END ----

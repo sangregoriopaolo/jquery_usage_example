@@ -4,8 +4,9 @@
 <head>
     <title>Films</title>
     <link rel="stylesheet" href="css/master.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen">
 </head>
 
 <body>
-    <h1>Movie Store</h1>
+    <h1>Movie DB</h1>
     <div id="body_container">

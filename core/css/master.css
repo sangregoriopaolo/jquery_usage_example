@@ -33,20 +33,76 @@ body {
     margin-bottom: 20px;
 }
 
-.movie_title {
-    width: 200px;
-}
-.movie_description {
-    width: 500px;
-}
-.movie_trailer {
-    width: 100px;
-}
-.movie_image {
-    width: 100px;
+body div.movie_table{
+width: 910px;
 }
 
-.movie_delete a {
-    text-decoration: none;
-    color: #FF0000;
+body div.movie_table ul.movie_thead{
+ width: 100%;
+ display: block;
+ height: 20px;
+ margin: 5px;
+ padding: 0px;
+}
+
+body div.movie_table ul.movie_drag{
+ width: 100%;
+ display: block;
+ height: 20px;
+ background: #777;
+ margin: 2px;
+ padding: 0px;
+}
+
+
+body div.movie_table ul.movie_drag li.movie_title , div.movie_table ul.movie_thead li.movie_title{
+    width: 200px;
+		float: left;
+		display: block;
+		height: 100%;
+}
+body div.movie_table ul.movie_drag li.movie_description,div.movie_table ul.movie_thead li.movie_description {
+    width: 500px;
+		float:left;
+		display: block;
+		height: 100%;
+}
+body div.movie_table ul.movie_drag li.movie_trailer ,div.movie_table ul.movie_thead li.movie_trailer{
+    width: 100px;
+		float: left;
+		display: block;
+		height: 100%;
+}
+body div.movie_table ul.movie_drag li.movie_image ,div.movie_table ul.movie_thead li.movie_image{
+    width: 100px;
+		float: left;
+		display: block;
+		height: 100%;
+}
+
+body div.movie_table ul.movie_drag li.movie_del ,div.movie_table ul.movie_thead li.movie_del{
+    width: 10px;
+		float: left;
+		display: block;
+		height: 100%;
+}
+
+.trash{
+ display: block;
+ width: 150px;
+ height: 100px;
+ border: 1px solid #000;
+ float: right;
+ right: 50px;
+}
+
+.trash_active{
+ 	border: 1px dotted #ff8000;
+	background: #feed89;
+}
+
+.helper{
+ background: #feed89;;
+ border: 1px dotted #ff8000;
+ padding: 10px;
 }

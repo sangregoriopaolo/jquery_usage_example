@@ -1,0 +1,90 @@
+
+/* the overlayed element */
+.apple_overlay {
+	
+	/* initially overlay is hidden */
+	display:none;
+	
+	/* growing background image */
+	background-image:url(../overlay/white.png);
+	
+	/* 
+		width after the growing animation finishes
+		height is automatically calculated
+	*/
+	width:640px;
+	
+	/* some padding to layout nested elements nicely  */
+	padding:35px;
+
+	/* a little styling */	
+	font-size:11px;
+}
+
+/* default close button positioned on upper right corner */
+.apple_overlay div.close {
+	background-image:url(../overlay/close.png);
+	position:absolute; 
+	right:5px; 
+	top:5px;
+	cursor:pointer;
+	height:35px;
+	width:35px;
+}
+
+#overlay .contentWrap{
+      height:500px; 
+      overflow-y: auto; 
+}
+
+body .ajax-loader{
+	margin: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -22px;
+	margin-top: -22px;
+	z-index: 100;
+	display: none;
+}
+
+#ajax_error{
+	display: none;
+	width: 400px;
+	border: 10px solid #ff0000;	
+	border: 10px solid rgba(240,0,0,0.68);	
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;	
+}
+
+#ajax_error div{
+	padding: 10px;
+	background: #fff;
+}
+
+#ajax_error div h2{
+	color: #fff;
+	background: #FFAAAA;
+	font-size: 20pt;
+	border: 1px solid #ff0000;
+	margin: -10px -10px 5px -10px;
+	padding: 5px 10px 5px;
+}
+
+#ajax_error div p{
+	margin: 15px 10px 15px 10px;
+	color: #000;
+}
+
+#ajax_error div button{
+	margin: 5px 10px 5px;
+	border: 1px solid #fff;
+	background: #333;
+	color: #fff;
+	height: 24px;
+	outline: 1px outset #999;
+	cursor: pointer;
+	
+	-moz-boreder-radius: 3px;
+	-moz-outline-radius: 3px;
+}
