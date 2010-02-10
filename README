@@ -1,3 +1,4 @@
 Setup instructions:
 1 - Chmod 777 your core/db folder
 2 - Point the browser to core/setup
+3 - Execute all the steps in the right order
