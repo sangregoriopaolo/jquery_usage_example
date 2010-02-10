@@ -6,7 +6,7 @@ include('includes/config.php');
 $db = connect();
 
 #Selecting all the films from the database
-$films = $db->query('SELECT * FROM movies');
+$films = $db->query('SELECT movies.id as movie_id, * FROM movies LEFT JOIN categories ON categories.id = movies.category_id');
 
 # ---- TEMPLATE START ----
 ?>
@@ -38,6 +38,7 @@ $films = $db->query('SELECT * FROM movies');
         <ul class="movie_thead">
             <li class="movie_title">Title</li>
             <li class="movie_description">Description</li>
+            <li class="movie_category">Category</li>
             <li class="movie_trailer">Trailer</li>
             <li class="movie_image">Image</li>
         </ul>
@@ -45,9 +46,10 @@ $films = $db->query('SELECT * FROM movies');
         <ul class="movie_drag">
             <li class="movie_title"><?php echo $film['title'] ?></li>
             <li class="movie_description"><?php echo $film['description'] ?></li>
+            <li class="movie_category"><?php echo $film['name'] ?></li>
             <li class="movie_trailer"><?php echo $film['trailer_url'] ?></li>
             <li class="movie_image"><?php echo $film['image'] ?></li>
-            <li class="movie_del"><a href="delete_movie.php?movie_id=<?php echo $film['id'] ?>">x</a></li>
+            <li class="movie_del"><a href="delete_movie.php?movie_id=<?php echo $film['movie_id'] ?>">x</a></li>
         </ul>
         <?php } ?>
     </div>
@@ -71,7 +73,7 @@ $films = $db->query('SELECT * FROM movies');
   </div>
    
 	<!--ajax loading image-->
-	<img src='./img/ajax-loader.gif' class="ajax-loader"></img>
+	<img src='./img/ajax-loader.gif' class="ajax-loader" />
 	
     <?php include('includes/footer.php'); ?>
 <?php
