@@ -1,0 +1,169 @@
+html,body {
+	font: 90% Arial, Helvetica, sans-serif;
+	color: #000;
+    height: 100%;
+	background: #fff;
+}
+
+/*
+page container to push footer
+*/
+#wrap{
+	/*bottom footer*/
+	position: relative;
+	min-height: 100%;
+	height: 100%;
+	height: auto !important;
+	margin: 0 auto -5px;
+}
+
+/*
+main data container
+*/
+#wrap #container{
+	width: 970px;
+	/*overlay on header*/
+	margin: -37px auto 0 auto;
+	position: relative;
+	/*overlay on footer*/
+	padding-bottom: 70px;
+	z-index: 5;
+	background: transparent;
+}
+
+/*
+page header
+*/
+#wrap #header{
+	height: 117px;
+	background: url("../img/header-bg.gif") repeat-x;
+	border-bottom: 0px;
+}
+
+/*
+page header wrap
+*/
+#wrap #header #headerWrap{
+	position: relative;
+	margin: auto;
+	width: 970px;
+	background: transparent;
+}
+
+/*
+header themeroller
+*/
+#wrap #header #headerWrap #themeRoller{
+	position: relative;
+	float: right;
+	top: 0;
+	border: 4px solid #ddd;
+	border-top: 0px;
+	color: #777;
+	padding: 5px;
+	
+	-moz-border-radius-bottomleft: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-webkit-border-radius-bottomleft: 4px;
+	-webkit-border-radius-bottomright: 4px;
+}
+
+/*
+contents element
+*/
+#wrap #container #contents{
+	width: 100%;
+	margin: -7px;
+	min-height: 200px;
+	position: relative;
+	border: 7px solid #c0c0c0;
+	border: 7px solid rgba(200,200,200,0.3);
+	background: transparent;
+	
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+/*
+categories selector
+*/
+#wrap #container #contents #categories{
+	width: 100%;
+	height: 30px;
+	position: relative;
+	margin: auto;
+	background: #eee;
+	text-align: center;
+	color: #777;
+}
+
+/*
+categories list
+*/
+#wrap #container #contents #categories #categories-list{
+	width: 150px;
+	height: 24px;
+	border: none;
+	background: #fff;
+	position: relative;
+	margin-top:3px;
+	color: #777;
+}
+
+/*
+where data is loaded with ajax
+*/
+#wrap #container #contents #contents-body{
+	background: #fff;
+	position: relative;
+	margin: auto;
+	padding: 5px;
+	
+	color: #000;
+	font-size: 13pt;
+}
+
+/*
+page footer
+*/
+#wrap #footer{
+	background: url("../img/footer-bg.gif") repeat-x #6445ff;
+	height: 100px;
+	text-align: center;
+	color: #fff;
+	font-style: italic;	
+	/*bottm footer*/
+	position: absolute;
+	width: 100%;
+	bottom: 0 !important;
+	bottom: -1px;
+	z-index: 0;
+}
+
+#wrap #footer span{
+	position: relative;
+	margin: auto;
+	top: 40px;
+}
+
+/*
+jQuery objects
+*/
+
+body .ajax-loader{
+	display: none;
+	margin: auto;
+	position: absolute;
+	top: 0px;
+	border: 4px solid #ddd;
+	border-top: 0px;
+	z-index: 100;
+	padding: 5px;
+	color: #777;
+	text-align: center;
+	
+	-moz-border-radius-bottomleft: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-webkit-border-radius-bottomleft: 4px;
+	-webkit-border-radius-bottomright: 4px;
+}

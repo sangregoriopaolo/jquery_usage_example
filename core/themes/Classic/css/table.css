@@ -1,0 +1,89 @@
+/*
+table with movies container
+*/
+div > div.movie_table{
+width: 100%;
+}
+
+/*
+table header row
+*/
+div > div.movie_table ul.movie_thead{
+ width: 100%;
+ display: block;
+ height: 25px;
+ margin: 0px;
+ padding: 0px;
+ margin: 5px 0px 5px 0px;
+ background: #DDDDDD;
+ color: #55595C;
+ font-style: italic;
+ font-weight: bold;
+}
+
+/*
+table header column
+*/
+ul > li.movie_thead_li{
+ width: 22%;
+ display: block;
+ float: left;
+ height: 100%;
+ margin: 0px 2px 0px 2px;
+ padding: 0px;
+ text-align: center;
+}
+
+/*
+table row
+*/
+div > div.movie_table ul.movie_drag{
+ width: 100%;
+ display: block;
+ height: 25px;
+ background: #DDDDDD;
+ color: #55595C;
+ margin: 5px 0px 5px 0px;
+ padding: 0px;
+ cursor: move;
+}
+
+div > div.movie_table ul.movie_drag:hover{
+ background: #FF8E53;
+ color: #fff;
+}
+
+/*
+table column
+*/
+ul > li.movie_drag_li{
+ width: 22%;
+ text-align: center;
+ display: block;
+ float: left;
+ height: 100%;
+ margin: 0px;
+ margin: 0px 2px 0px 2px;
+ padding: 0px;
+}
+
+/*
+table delete column (width <)
+*/
+ul> li.movie_thead_del{
+	width: 50px;
+	height: 100%;
+	display: block;
+	margin: 0px 2px 0px 2px;
+	float: left;
+}
+
+ul > li.movie_drag_del{
+	width: 50px;
+	height: 100%;
+	display: block;
+	margin: 0px 2px 0px 2px;
+	float: left;
+	background: url("../img/delete.png") no-repeat 0 0;
+	cursor: pointer;
+}

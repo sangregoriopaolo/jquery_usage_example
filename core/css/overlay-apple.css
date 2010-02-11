@@ -37,19 +37,8 @@
       overflow-y: auto; 
 }
 
-body .ajax-loader{
-	margin: auto;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-left: -22px;
-	margin-top: -22px;
-	z-index: 100;
-	display: none;
-}
-
 #ajax_error{
-	display: none;
+    display: none;
 	width: 400px;
 	border: 10px solid #ff0000;	
 	border: 10px solid rgba(240,0,0,0.68);	
