@@ -67,3 +67,28 @@
 			$("#ajax_error").overlay({api: true,}).load();
 	 }
  });
+ 
+function delete_movie(movie_id) {
+     if(confirm("Do you really want to delete this movie?")) {
+         movieContent = jQuery("#movie_" + movie_id).html();
+         jQuery.ajax({
+                      type: 'POST',
+                      url: 'db_delete_movie.php?movie_id=' + movie_id,
+                      dataType: 'json',
+                      beforeSend: function() {
+                          jQuery("#movie_" + movie_id).css("background-color", "#FFAAAA");
+                          jQuery("#movie_" + movie_id).html("<li>Deleting movie..</li>");
+                      },
+                      error: function(data, text_status, XHR) {
+                          jQuery("#movie_" + movie_id).css("background-color", "");
+                          jQuery("#movie_" + movie_id).html(movieContent);
+                          alert("Unable to delete this movie");
+                      },
+                      success: function(data, text_status, XHR) {
+                          if(data.status == 'ok') {
+                              jQuery("#movie_" + movie_id).slideUp();
+                          }
+                      }
+	                });
+    }
+}

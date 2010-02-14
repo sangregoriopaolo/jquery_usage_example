@@ -43,13 +43,13 @@ $films = $db->query('SELECT movies.id as movie_id, * FROM movies LEFT JOIN categ
             <li class="movie_image">Image</li>
         </ul>
         <?php while($film = $films->fetchArray(SQLITE3_ASSOC)) { ?>
-        <ul class="movie_drag">
+        <ul class="movie_drag" id="movie_<?php echo $film['movie_id']; ?>">
             <li class="movie_title"><?php echo $film['title'] ?></li>
             <li class="movie_description"><?php echo $film['description'] ?></li>
             <li class="movie_category"><?php echo $film['name'] ?></li>
             <li class="movie_trailer"><?php echo $film['trailer_url'] ?></li>
             <li class="movie_image"><?php echo $film['image'] ?></li>
-            <li class="movie_del"><a href="delete_movie.php?movie_id=<?php echo $film['movie_id'] ?>">x</a></li>
+            <li class="movie_del"><a href="#" onclick="delete_movie(<?php echo $film['movie_id']; ?>); return false;">x</a></li>
         </ul>
         <?php } ?>
     </div>
