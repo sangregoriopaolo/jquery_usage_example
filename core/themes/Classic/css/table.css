@@ -3,6 +3,7 @@ table with movies container
 */
 div > div.movie_table{
 width: 100%;
+line-height: 25px;
 }
 
 /*
@@ -45,7 +46,6 @@ div > div.movie_table ul.movie_drag{
  color: #55595C;
  margin: 5px 0px 5px 0px;
  padding: 0px;
- cursor: move;
 }
 
 div > div.movie_table ul.movie_drag:hover{

@@ -4,11 +4,12 @@ sidebar foating on right of container
 #wrap #container #sidebar{
 	position: relative;
 	float: right;
-	margin-right: -150px;
+	right:-150px;
 	width: 150px;
 	height: 100%;
 	top: 50px;
 	z-index: 10;
+	display: block;
 }
 
 /*
@@ -34,8 +35,10 @@ sidebar button at normal state
 	background: #ddd;
 	border: 1px  groove #fff;
 	text-align: center;
+	text-decoration: none;
 	-moz-border-radius-topright: 4px;
 	-moz-border-radius-bottomright: 4px;
+	cursor: pointer;
 }
 
 /*
@@ -46,6 +49,7 @@ sidebar button activeted
 	border: 1px dotted #ddd;
 	border-left: 0;
 	z-index: 20;
+	cursor: default;
 	
 	-moz-border-radius-topright: 4px;
 	-moz-border-radius-bottomright: 4px;
@@ -55,8 +59,8 @@ sidebar button activeted
 sidebar button droppable
 */
 .sidebarDrop{
-	background: #ff8000;
-	border: 1px dotted #ff8040;
+	background: #80ff80;
+	border: 1px dotted #00ff00;
 	border-left: 0;
 	z-index: 20;
 	

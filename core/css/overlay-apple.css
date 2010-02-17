@@ -44,6 +44,7 @@
 	border: 10px solid rgba(240,0,0,0.68);	
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;	
+	z-index: 800;
 }
 
 #ajax_error div{
@@ -77,3 +78,35 @@
 	-moz-boreder-radius: 3px;
 	-moz-outline-radius: 3px;
 }
+
+/*.helper{
+	display: block;
+	width: 209px;
+	height: 109px;
+	background: url("../img/helper.png") no-repeat center;
+	text-align: center;
+}*/
+
+.tooltip{
+	background:url("../img/helper.png") no-repeat scroll 0 0 transparent;
+    color:#333;
+    font-size:12px;
+	font-style:italic;
+	font-weight: bold;
+    height:60px;
+    padding:25px;
+    width:160px;
+	z-index: 600;
+}
+
+/*.helper span{
+	position: absolute;
+	color: #333;
+	font-style: italic;
+	font-weight: bolder;
+	top: 50%;
+	margin:0px;
+	margin-top:-15px;
+	line-height: 30px;
+	
+}*/

@@ -74,7 +74,7 @@ contents element
 #wrap #container #contents{
 	width: 100%;
 	margin: -7px;
-	min-height: 200px;
+	min-height: 300px;
 	position: relative;
 	border: 7px solid #c0c0c0;
 	border: 7px solid rgba(200,200,200,0.3);
@@ -95,6 +95,28 @@ categories selector
 	background: #eee;
 	text-align: center;
 	color: #777;
+}
+
+/*
+add new movie
+*/
+#wrap #container #contents #categories #new-movie{
+	float: left;
+	margin: 4px 0px 0px 5px;
+	color: #333;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 20px;
+	display: block;
+	width:100px;
+	height: 21px;
+	background: url("../img/new-movie.png") 0 0 transparent;
+}
+
+#wrap #container #contents #categories #new-movie:hover{
+	color: #fff;
+	background: url("../img/new-movie.png") 0 25px transparent;
+	cursor: pointer;
 }
 
 /*
@@ -151,16 +173,19 @@ jQuery objects
 */
 
 body .ajax-loader{
-	display: none;
+ 	display: none;
 	margin: auto;
+	margin-left: -44px;
 	position: absolute;
+	left: 50%;
 	top: 0px;
 	border: 4px solid #ddd;
 	border-top: 0px;
-	z-index: 100;
+	z-index: 600;
 	padding: 5px;
 	color: #777;
 	text-align: center;
+	background: #fff;
 	
 	-moz-border-radius-bottomleft: 4px;
 	-moz-border-radius-bottomright: 4px;

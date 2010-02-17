@@ -1,3 +1,3 @@
 <?php
-header('Location: list_movies.php');
+header('Location: main.php');
 ?>

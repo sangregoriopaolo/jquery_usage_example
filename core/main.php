@@ -7,6 +7,12 @@
 		<link type="text/css" rel="stylesheet" href="themes/Classic/css/main.css" >
 		<link type="text/css" rel="stylesheet" href="themes/Classic/css/sidebar.css" >
 		<link type="text/css" rel="stylesheet" href="themes/Classic/css/table.css" >
+		
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/jquery-tools.js"></script>
+		<script type="text/javascript" src="js/jquery-easing.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
 		<title>Movie DB</title>
 	</head>
 	<body>
@@ -29,8 +35,8 @@
 
 				<div id="sidebar">
 					<div id="sidebarWrap">
-					  <a class="sidebarButton sidebarActive"><span class="sidebarButtonText">My Film</span></a>
-					  <a class="sidebarButton"><span class="sidebarButtonText">Favourites</span></a>
+					  <div class="sidebarButton sidebarActive" title="0"><span class="sidebarButtonText">My Film</span></div>
+					  <div class="sidebarButton" title="1"><span class="sidebarButtonText">Favourites</span></div>
 					</div>
 				</div>
 				<!--end sidebar-->
@@ -42,34 +48,14 @@
 									
 						<span>Select category:</span>
 						<select id="categories-list">
-							<option>all</option>
-							<option>best</option>
+							<option value="-1">all</option>
+							<option value="1">best</option>
 						</select>
 						
 					</div>
 					<!--end categories-->
 					
 					<div id="contents-body">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at purus ac augue mattis convallis. Cras lacus risus, porta vitae hendrerit suscipit, sagittis a ipsum. Phasellus in nibh a nunc ullamcorper rutrum. Sed tincidunt suscipit consequat. Pellentesque placerat, magna id viverra hendrerit, elit quam pharetra purus, id porta risus dui nec neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut tempus leo at neque faucibus dapibus. Nullam posuere rhoncus eros eu venenatis. Vivamus at eros diam, et condimentum ligula. Etiam nec dui tortor. Morbi tristique, odio ac blandit sodales, dui erat tempus erat, in bibendum nunc libero non mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-					
-					<!--NOT TEMPLATE-->
-					<div class="movie_table">
-        				<ul class="movie_thead">
-          					  <li class="movie_thead_li">Title</li>
-          					  <li class="movie_thead_li">Description</li>
-          					  <li class="movie_thead_li">Trailer</li>
-          					  <li class="movie_thead_li">Image</li>
-							  <li class="movie_thead_del">Delete</li>
-        				</ul>
-						<ul class="movie_drag">
-            				<li class="movie_drag_li">fgfdgg</li>
-            				<li class="movie_drag_li">gdfgdfgdfgdfg</li>
-            				<li class="movie_drag_li">dggdgdg</li>
-            				<li class="movie_drag_li">gdgfgfdgdfg</li>
-            				<li class="movie_drag_del"></li>
-        				</ul>
-					</div>
-					<!--NOT TEMPLATE-->
 					
 					</div>
 					<!--end contents-body-->
@@ -92,7 +78,7 @@
 			<!--ajax loader-->
 			<div class="ajax-loader">
 				<p>Loading Data...</p>
-				<img alt="ajax-loader" src="img/ajax-loader.gif" >
+				<img alt="ajax-loader" src="img/ajax-loader.gif" style="margin-top:2px">
 			</div>
 			
 			<!-- overlayed element --> 

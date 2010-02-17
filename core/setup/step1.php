@@ -7,7 +7,8 @@ if(!$db->exec("CREATE TABLE IF NOT EXISTS movies (id INTEGER PRIMARY KEY AUTOINC
                                                       title varchar(100) NOT NULL,
                                                       description text NOT NULL,
                                                       trailer_url varchar(300) NOT NULL,
-                                                      image varchar(300) NOT NULL)")) {
+                                                      image varchar(300) NOT NULL,
+													  favourite binary(1) default 0)")) {
     throw new Exception( $db->lastErrorMsg() );
 }
 
