@@ -41,7 +41,7 @@
 				dataType: "html",
 				data: "favourite="+$(".sidebarActive").attr("title")+"&category="+$("#categories-list option:selected").attr("value"),
 				beforeSend: function(){
-					$("#contents-body").html("");
+					$("#contents-body").fadeOut("fast");
 				},
 				success: function(data){
 					$("#contents-body").html(data);
@@ -49,8 +49,33 @@
 					$(".movie_drag").each(function(){
   						$(this).add_drag();
   					});
+					$("#contents-body").fadeIn("slow");
 				},
 			});
+	}
+	
+	function loadCategory(queue){
+		$.ajax({
+			url: "db_list_category.php",
+			dataType: "json",
+			success: function(data){
+				if (data.status == 'ok') {
+					$("#categories-list").html("");
+					$("#categories-list").append("<option value='-1'>All</option>");
+					$("#categories-list").append("<option disabled='disabled'>-----------------</option>");
+					for(i=0;i<data.num;i++){
+						$("#categories-list").append("<option value="+data.cat[i].id+">"+data.cat[i].name+"</option>");
+					}
+					$(queue).dequeue("load");
+				}
+				else{
+					ajax_error(data.code+" : "+data.msg);
+				}
+			},
+			error: function(XHR,Status){
+				ajax_error(status+" code: "+XHR.status+" description: "+XML.statusText);
+			}
+		});
 	}
 	
 	//change category
@@ -82,10 +107,13 @@
 			loadContents();
 	}	
 	
+	//bind the click function to each button
+	$(".sidebarButton").bind("click",click_handler);
+	
 	$("#container").hover(function(){
-		$("#sidebarWrap").slideDown(500,"easeInExpo");
+		$("#sidebarWrap").stop().slideDown(500,"easeInExpo").queue(function(){$(this).css("height","auto").dequeue();});
 	},function(){
-		$("#sidebarWrap").slideUp(500,"easeOutBounce");
+		$("#sidebarWrap").stop().slideToggle(500,"easeOutBounce");
 	});
 	
 //drag & drop ---------------------------------------------------------------------
@@ -133,7 +161,7 @@
 				},
 				error: function(XHR,Status){
 					ui.draggable.html(movieContent);
-					ajax_error(status+" code: "+XHR.status+" description: "+XML.statusText)
+					ajax_error(status+" code: "+XHR.status+" description: "+XML.statusText);
 				}
 			});
 		}
@@ -157,9 +185,25 @@
 	 });
 	 
 //on load sequence----------------------------------------------------------------
-	//bind the click function to each button end execute it on
-	//the first matched element
-	$(".sidebarButton").each(function(){
-		 $(this).bind("click",click_handler);
-	}).filter(":first").click();
+	//extend jQuery object to prepare reload queue
+	$.extend({
+		reload: function(){
+			$(document).queue("load",function(){
+				loadCategory(this);
+			}).queue("load",function(){
+				$(".sidebarActive").click();
+			}).dequeue("load");
+		},
+	});
+	
+	/*$.fn.reload=function(){
+		return this.queue("load",function(){
+			loadCategory(this);
+		}).queue("load",function(){
+			$(".sidebarActive").click();
+		}).dequeue("load");
+	}*/
+	
+	//load data on document ready
+	$.reload();
  });

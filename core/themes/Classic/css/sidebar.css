@@ -4,7 +4,7 @@ sidebar foating on right of container
 #wrap #container #sidebar{
 	position: relative;
 	float: right;
-	right:-150px;
+	margin-right:-150px;
 	width: 150px;
 	height: 100%;
 	top: 50px;
@@ -18,7 +18,7 @@ no scroll sidebar container
 #wrap #container #sidebar #sidebarWrap{
 	position: fixed;
 	width: 150px;
-	display: block;
+	display: none;
 }
 
 /*
@@ -26,14 +26,15 @@ sidebar button at normal state
 */
 .sidebarButton{
 	height: 80px;
-	width: 150px;
+	width: 149px;
 	display: block;
 	z-index:10;
 	font-size: 12pt;
 	color: #000;
 	font-weight: bold;
 	background: #ddd;
-	border: 1px  groove #fff;
+	border: 1px  dotted #ccc;
+	border-left:0px;
 	text-align: center;
 	text-decoration: none;
 	-moz-border-radius-topright: 4px;

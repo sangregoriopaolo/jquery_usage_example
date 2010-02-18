@@ -27,13 +27,13 @@ $categories = $db->query("SELECT * FROM categories");
 </style>
 
 <script type="text/javascript">
-  $(document).ready(function(){
 	$("#f_new_movie").submit(function(event) {
 	    event.preventDefault();
 		 var data=$(this).serialize();
 		 $.post($(this).attr("action"),data,function(data,msg){
 		   alert(data.status);
 		   overlay.close();
+		   $.reload();
 		 },'json');
 	});
 	
@@ -66,7 +66,6 @@ $categories = $db->query("SELECT * FROM categories");
 	    jQuery("#movie_category").append(jQuery('<option></option>').val(to_add_id).html(to_add_name))
 	                             .val(to_add_id);
 	}
-	});
 </script>
 	
 	

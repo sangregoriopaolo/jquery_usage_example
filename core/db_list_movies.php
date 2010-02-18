@@ -16,7 +16,7 @@
         <!--table header-->
 		<ul class="movie_thead">
           <li class="movie_thead_li">Title</li>
-          <li class="movie_thead_li">Description</li>
+          <li class="movie_thead_li">Category</li>
           <li class="movie_thead_li">Trailer</li>
           <li class="movie_thead_li">Image</li>
 		  <li class="movie_thead_del">Delete</li>

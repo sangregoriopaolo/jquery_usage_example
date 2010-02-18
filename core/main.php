@@ -11,7 +11,6 @@
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/jquery-ui.js"></script>
 		<script type="text/javascript" src="js/jquery-tools.js"></script>
-		<script type="text/javascript" src="js/jquery-easing.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		<title>Movie DB</title>
 	</head>
@@ -48,8 +47,6 @@
 									
 						<span>Select category:</span>
 						<select id="categories-list">
-							<option value="-1">all</option>
-							<option value="1">best</option>
 						</select>
 						
 					</div>
