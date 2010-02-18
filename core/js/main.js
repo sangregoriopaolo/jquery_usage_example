@@ -1,6 +1,27 @@
-/**
- * @author Simone
- */
+function delete_movie(movie_id) {
+    if(confirm("Do you really want to delete this movie?")) {
+        movieContent = jQuery("#movie_" + movie_id).html();
+        jQuery.ajax({
+                     type: 'POST',
+                     url: 'db_delete_movie.php?movie_id=' + movie_id,
+                     dataType: 'json',
+                     beforeSend: function() {
+                         jQuery("#movie_" + movie_id).css("background-color", "#FFAAAA");
+                         jQuery("#movie_" + movie_id).html("<li>Deleting movie..</li>");
+                     },
+                     error: function(data, text_status, XHR) {
+                         jQuery("#movie_" + movie_id).css("background-color", "");
+                         jQuery("#movie_" + movie_id).html(movieContent);
+                         alert("Unable to delete this movie");
+                     },
+                     success: function(data, text_status, XHR) {
+                         if(data.status == 'ok') {
+                             jQuery("#movie_" + movie_id).slideUp();
+                         }
+                     }
+ 	    });
+    }
+}
 
  $(document).ready(function(){
  //ajax setup --------------------------------------------------------------
@@ -35,11 +56,15 @@
  	
 //contents loader ----------------------------------------------------------
 	function loadContents(){
+	    cat_id = $("#categories-list option:selected").attr("value");
+	    if (cat_id == null) {
+	        cat_id = -1;
+	    }
 		$.ajax({
 				url: "db_list_movies.php",
 				type: "GET",
 				dataType: "html",
-				data: "favourite="+$(".sidebarActive").attr("title")+"&category="+$("#categories-list option:selected").attr("value"),
+				data: "favourite="+$(".sidebarActive").attr("title")+"&category="+cat_id,
 				beforeSend: function(){
 					$("#contents-body").fadeOut("fast");
 				},
@@ -183,13 +208,14 @@
 			},
 		});
 	 });
-	 
+ 
 //on load sequence----------------------------------------------------------------
 	//extend jQuery object to prepare reload queue
 	$.extend({
 		reload: function(){
 			$(document).queue("load",function(){
 				loadCategory(this);
+				loadContents();
 			}).queue("load",function(){
 				$(".sidebarActive").click();
 			}).dequeue("load");

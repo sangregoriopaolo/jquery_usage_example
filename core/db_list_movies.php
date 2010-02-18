@@ -3,8 +3,8 @@
 	
 	$db=connect();
 	
-	$favourite=$_GET['favourite'];
-	$category=$_GET['category'];
+	$favourite = $_GET['favourite'];
+	$category = $_GET['category'];
 	
 	if($category!=-1)
 	 $query="SELECT movies.id as movie_id,* FROM movies LEFT JOIN categories ON categories.id = movies.category_id WHERE (category_id=".$category." AND favourite=".$favourite.")";
@@ -24,13 +24,13 @@
 	 <?php
 	  while( $film = $films->fetchArray(SQLITE3_ASSOC) )
 	  { ?>
-	  	<ul class="movie_drag">
+	  	<ul class="movie_drag" id="movie_<?php echo $film['movie_id']; ?>">
 	  		<li style="display: none;" class="movie_id"><?php echo $film['movie_id'];?></li>
             <li class="movie_drag_li movie_title"><?php echo $film['title']; ?></li>
             <li class="movie_drag_li movie_category"><?php echo $film['name']; ?></li>
             <li class="movie_drag_li movie_trailer"><?php echo $film['trailer_url']; ?></li>
             <li class="movie_drag_li movie_image"><?php echo $film['image']; ?></li>
-            <li class="movie_drag_del"></li>
+            <li class="movie_drag_del"><input type="button" value="X" class="del_button" onclick="delete_movie(<?php echo $film['movie_id']; ?>);"/></li>
         </ul>
 	 <?php
 	  }

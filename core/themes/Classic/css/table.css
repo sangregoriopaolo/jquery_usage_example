@@ -84,6 +84,14 @@ ul > li.movie_drag_del{
 	display: block;
 	margin: 0px 2px 0px 2px;
 	float: left;
-	background: url("../img/delete.png") no-repeat 0 0;
 	cursor: pointer;
+}
+
+.del_button {
+	background: url("../img/delete.png") no-repeat 0 0;
+	text-indent: -9999px;
+	cursor: pointer;
+	border: 0px;
+	width: 24px;
+	height: 24px;
 }
