@@ -31,9 +31,11 @@ $categories = $db->query("SELECT * FROM categories");
 	    event.preventDefault();
 		 var data=$(this).serialize();
 		 $.post($(this).attr("action"),data,function(data,msg){
-		   alert(data.status);
-		   overlay.close();
-		   $.reload();
+			if(data.status=='ok'){
+				$.reload();
+				overlay.close();
+			}else
+			ajax_error(data.code+" : "+data.msg);
 		 },'json');
 	});
 	

@@ -90,7 +90,7 @@
 			<div id="ajax_error">
 				<div>
 					<h2>Errore</h2>
-					<p id="errror_desc">errrore imprevisto</p>
+					<p id="error_desc">errrore imprevisto</p>
 					<button class="close">Chiudi</button>
 				</div>
   			</div>

@@ -132,6 +132,14 @@ categories list
 	color: #777;
 }
 
+#wrap #container #contents #categories #delete_category{
+	background: url("../img/delete.png") no-repeat;
+	display: inline-block;
+	height: 24px;
+	width: 24px;
+	position: relative;
+}
+
 /*
 where data is loaded with ajax
 */

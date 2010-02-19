@@ -16,13 +16,17 @@
 		$(this).slideUp(300);
 	});
 	
-	function ajax_error(msg){
-	   	$("#ajax_error p:first").text(msg);
+	$("#ajax_error").ajaxError(function(e, XHR, settings, exception){
+		ajax_error("Code: "+XHR.status+" Description: "+XML.statusText+"<p>On loading: "+settings.url+"</p>");
+	});
+	
+	ajax_error=function (msg){
+	   	$("#ajax_error").find("#error_desc").html(msg);
 		$("#ajax_error").overlay({api: true,}).load();
 	 }
 	
 	//set default option for overlay
-	var overlay=$("#overlay").overlay({
+	overlay=$("#overlay").overlay({
 	 	api: true,
 		oneInstance: true,
 		top: '5%',
@@ -55,6 +59,9 @@
 	}
 	
 	function loadCategory(queue){
+		//save selected element
+		if($("#categories-list option:selected").length!=0)
+			var selected=$("#categories-list option:selected").attr("value");
 		$.ajax({
 			url: "db_list_category.php",
 			dataType: "json",
@@ -63,18 +70,18 @@
 					$("#categories-list").html("");
 					$("#categories-list").append("<option value='-1'>All</option>");
 					$("#categories-list").append("<option disabled='disabled'>-----------------</option>");
+					//build categories selector
 					for(i=0;i<data.num;i++){
 						$("#categories-list").append("<option value="+data.cat[i].id+">"+data.cat[i].name+"</option>");
 					}
+					//select old selected element if exist
+					$("#categories-list option[value="+selected+"]").attr("selected","selected");
 					$(queue).dequeue("load");
 				}
 				else{
 					ajax_error(data.code+" : "+data.msg);
 				}
 			},
-			error: function(XHR,Status){
-				ajax_error(status+" code: "+XHR.status+" description: "+XML.statusText);
-			}
 		});
 	}
 	
@@ -82,11 +89,10 @@
 	$("#categories-list").change(function(){
 		loadContents();
 	});
-	
-	
+		
 //tab navigation -------------------------------------------------------------------
 	var click_handler= function(event){
-			event.preventDefault();
+			//event.preventDefault();
 			$(this).addClass("sidebarActive");
 			$(this).unbind("click");
 			$(this).droppable("disable");
@@ -106,10 +112,8 @@
   			});
 			loadContents();
 	}	
-	
-	//bind the click function to each button
-	$(".sidebarButton").bind("click",click_handler);
-	
+
+	//slide fx
 	$("#container").hover(function(){
 		$("#sidebarWrap").stop().slideDown(500,"easeInExpo").queue(function(){$(this).css("height","auto").dequeue();});
 	},function(){
@@ -149,26 +153,25 @@
 				dataType: "json",
 				data: data,
 				beforeSend: function(){
-					ui.draggable.html("Updating...");
+					ui.draggable.html("<span>Updating...</span>");
 				},
 				success: function(data){
 					if(data.status=='ok')
 					 ui.draggable.slideUp();
 					else{
 					 ui.draggable.html(movieContent);
-					 ajax_error("unable to move");	
+					 ajax_error(data.code+" : "+data.msg);	
 					}
 				},
 				error: function(XHR,Status){
 					ui.draggable.html(movieContent);
-					ajax_error(status+" code: "+XHR.status+" description: "+XML.statusText);
 				}
 			});
 		}
 	});
 
 //add movie----------------------------------------------------------------------
-	 //load ajax request 
+	 //load ajax page into overlay and open it 
 	 $('#new-movie').click(function(event){
 		$.ajax({
 			dataType: 'html',
@@ -178,12 +181,31 @@
 				overlay.getOverlay().find(".contentWrap").html(data);
 				overlay.load();
 			},
-			error: function(XHR,Status){
-			  ajax_error(status+" code: "+XHR.status+" description: "+XML.statusText);
-			},
 		});
 	 });
 	 
+//delete movie--------------------------------------------------------------------
+   delete_movie=function (movie_id) {
+	     if(confirm("Do you really want to delete this movie?")) {
+	         movieContent = jQuery("#movie_" + movie_id).html();
+	         jQuery.ajax({
+	                      type: 'POST',
+	                      url: 'db_delete_movie.php?movie_id=' + movie_id,
+	                      dataType: 'json',
+	                      beforeSend: function() {
+	                          jQuery("#movie_" + movie_id).css("background-color", "#FFAAAA").html("<span>Deleting movie..</span>");
+	                      },
+	                      error: function(data, text_status, XHR) {
+	                          jQuery("#movie_" + movie_id).css("background-color", "").html(movieContent);
+	                      },
+	                      success: function(data, text_status, XHR) {
+	                          if(data.status == 'ok') {
+	                              jQuery("#movie_" + movie_id).slideUp();
+	                          }
+	                      }
+		                });
+	    }
+	}
 //on load sequence----------------------------------------------------------------
 	//extend jQuery object to prepare reload queue
 	$.extend({
@@ -191,19 +213,14 @@
 			$(document).queue("load",function(){
 				loadCategory(this);
 			}).queue("load",function(){
+				//bind the click function to each button
+	            $(".sidebarActive").bind("click",click_handler);
 				$(".sidebarActive").click();
 			}).dequeue("load");
 		},
 	});
-	
-	/*$.fn.reload=function(){
-		return this.queue("load",function(){
-			loadCategory(this);
-		}).queue("load",function(){
-			$(".sidebarActive").click();
-		}).dequeue("load");
-	}*/
-	
+
 	//load data on document ready
 	$.reload();
  });
+
