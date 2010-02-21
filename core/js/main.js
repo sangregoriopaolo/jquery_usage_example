@@ -41,11 +41,15 @@
 	 	
 //contents loader ----------------------------------------------------------
 	function loadContents(){
+        cat_id = $("#categories-list option:selected").attr("value");
+        if (cat_id == null) {
+            cat_id = -1;
+        }
 		$.ajax({
 				url: "db_list_movies.php",
 				type: "GET",
 				dataType: "html",
-				data: "favourite="+$(".sidebarActive").attr("title")+"&category="+$("#categories-list option:selected").attr("value"),
+				data: "favourite="+$(".sidebarActive").attr("title")+"&category="+cat_id,
 				beforeSend: function(){
 					$("#contents-body").fadeOut("fast");
 				},
@@ -215,6 +219,7 @@
 		reload: function(){
 			$(document).queue("load",function(){
 				loadCategory(this);
+				loadContents();
 			}).queue("load",function(){
 				//bind click function to sidebar active button
 	            $(".sidebarActive").bind("click",click_handler);
