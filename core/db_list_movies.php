@@ -28,8 +28,8 @@
 	  		<li style="display: none;" class="movie_id"><?php echo $film['movie_id'];?></li>
             <li class="movie_drag_li movie_title"><?php echo $film['title']; ?></li>
             <li class="movie_drag_li movie_category"><?php echo $film['name']; ?></li>
-            <li class="movie_drag_li movie_trailer"><?php echo $film['trailer_url']; ?></li>
-            <li class="movie_drag_li movie_image"><?php echo $film['image']; ?></li>
+            <li class="movie_drag_li movie_trailer"><span rel="<?php echo $film['trailer_url']; ?>">View trailer</span></li>
+            <li class="movie_drag_li movie_image"><span rel="<?php echo $film['image']; ?>">View image</span></li>
             <li class="movie_drag_del" onclick="delete_movie(<?php echo $film['movie_id']; ?>)"></li>
         </ul>
 	 <?php

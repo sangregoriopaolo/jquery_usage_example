@@ -13,30 +13,32 @@
 	});
 	
 	$(".ajax-loader").ajaxComplete(function(){
-		$(this).slideUp(300);
+		setTimeout(function(){$(".ajax-loader").slideUp(300);},700);
+		
 	});
 	
 	$("#ajax_error").ajaxError(function(e, XHR, settings, exception){
-		ajax_error("Code: "+XHR.status+" Description: "+XML.statusText+"<p>On loading: "+settings.url+"</p>");
+		Ajax_error("Code: "+XHR.status+" Description: "+XML.statusText+"<p>On loading: "+settings.url+"</p>");
 	});
 	
-	ajax_error=function (msg){
+     Ajax_error=function (msg){
+	 	Overlay.close();
 	   	$("#ajax_error").find("#error_desc").html(msg);
 		$("#ajax_error").overlay({api: true,}).load();
-	 }
+	 };
 	
 	//set default option for overlay
-	overlay=$("#overlay").overlay({
+    Overlay=$("#overlay").overlay({
 	 	api: true,
-		oneInstance: true,
-		top: '5%',
+		oneInstance: false,
+		top: '8%',
 		expose: {
 			color: '#ddd',
 			zIndex: 500,
 			},
 		effect: 'apple',
 	});
- 	
+	 	
 //contents loader ----------------------------------------------------------
 	function loadContents(){
 		$.ajax({
@@ -76,10 +78,10 @@
 					}
 					//select old selected element if exist
 					$("#categories-list option[value="+selected+"]").attr("selected","selected");
-					$(queue).dequeue("load");
+					$(document).dequeue("load");
 				}
 				else{
-					ajax_error(data.code+" : "+data.msg);
+					Ajax_error(data.code+" : "+data.msg);
 				}
 			},
 		});
@@ -114,11 +116,12 @@
 	}	
 
 	//slide fx
+	/*
 	$("#container").hover(function(){
 		$("#sidebarWrap").stop().slideDown(500,"easeInExpo").queue(function(){$(this).css("height","auto").dequeue();});
 	},function(){
 		$("#sidebarWrap").stop().slideToggle(500,"easeOutBounce");
-	});
+	});*/
 	
 //drag & drop ---------------------------------------------------------------------
 	   
@@ -131,7 +134,7 @@
 			cursorAt: { top: -5, left: -5 },
 	   		helper: function(event) {
 		   		return $('<div class="tooltip">Titolo: '+$('.movie_title',this).html()+'</div>');
-	   		}
+	   		},
 		});
 		return this;
 	}
@@ -160,12 +163,12 @@
 					 ui.draggable.slideUp();
 					else{
 					 ui.draggable.html(movieContent);
-					 ajax_error(data.code+" : "+data.msg);	
+					 Ajax_error(data.code+" : "+data.msg);	
 					}
 				},
 				error: function(XHR,Status){
 					ui.draggable.html(movieContent);
-				}
+				},
 			});
 		}
 	});
@@ -178,8 +181,8 @@
 			type: 'GET',
 			url: 'add_movie.php',
 			success: function(data,status,XHR){
-				overlay.getOverlay().find(".contentWrap").html(data);
-				overlay.load();
+				Overlay.getOverlay().find(".contentWrap").html(data);
+				Overlay.load();
 			},
 		});
 	 });
@@ -202,10 +205,10 @@
 	                          if(data.status == 'ok') {
 	                              jQuery("#movie_" + movie_id).slideUp();
 	                          }
-	                      }
+	                      },
 		                });
 	    }
-	}
+	};
 //on load sequence----------------------------------------------------------------
 	//extend jQuery object to prepare reload queue
 	$.extend({
@@ -213,7 +216,7 @@
 			$(document).queue("load",function(){
 				loadCategory(this);
 			}).queue("load",function(){
-				//bind the click function to each button
+				//bind click function to sidebar active button
 	            $(".sidebarActive").bind("click",click_handler);
 				$(".sidebarActive").click();
 			}).dequeue("load");

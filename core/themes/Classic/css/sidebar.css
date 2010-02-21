@@ -18,7 +18,6 @@ no scroll sidebar container
 #wrap #container #sidebar #sidebarWrap{
 	position: fixed;
 	width: 150px;
-	display: none;
 }
 
 /*

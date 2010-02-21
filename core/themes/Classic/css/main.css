@@ -76,7 +76,7 @@ contents element
 	margin: -7px;
 	min-height: 300px;
 	position: relative;
-	border: 7px solid #c0c0c0;
+	border: 7px solid #ddd;
 	border: 7px solid rgba(200,200,200,0.3);
 	background: transparent;
 	
@@ -193,7 +193,7 @@ body .ajax-loader{
 	padding: 5px;
 	color: #777;
 	text-align: center;
-	background: #fff;
+	background: transparent;
 	
 	-moz-border-radius-bottomleft: 4px;
 	-moz-border-radius-bottomright: 4px;

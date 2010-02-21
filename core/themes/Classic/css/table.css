@@ -87,3 +87,22 @@ ul > li.movie_drag_del{
 	background: url("../img/delete.png") no-repeat 0 0;
 	cursor: pointer;
 }
+
+.movie_trailer span, .movie_image span{
+	background: url("../img/button-var.png") no-repeat 0 0;
+	display: block;
+	width: 150px;
+	height: 20px;
+	font-size: 12px;
+	font-weight:bold;
+	line-height:20px;
+	margin: auto;
+	margin-top:3px;
+	color: #333;
+}
+
+.movie_trailer span:hover, .movie_image span:hover{
+	background: url("../img/button-var.png") no-repeat 0 -21px;
+	color: #fff;
+	cursor: pointer;
+}

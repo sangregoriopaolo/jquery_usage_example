@@ -94,6 +94,7 @@
 					<button class="close">Chiudi</button>
 				</div>
   			</div>
+
 		<!--end Jquery object-->
 		
 	</body>

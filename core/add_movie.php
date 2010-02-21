@@ -4,7 +4,7 @@ include ('includes/config.php');
 $db = connect();
 $categories = $db->query("SELECT * FROM categories");
 ?>
-<style>
+<style type="text/css">
     form ul {
         width: 305px;
     }
@@ -33,9 +33,9 @@ $categories = $db->query("SELECT * FROM categories");
 		 $.post($(this).attr("action"),data,function(data,msg){
 			if(data.status=='ok'){
 				$.reload();
-				overlay.close();
+				Overlay.close();
 			}else
-			ajax_error(data.code+" : "+data.msg);
+			Ajax_error(data.code+" : "+data.msg);
 		 },'json');
 	});
 	
