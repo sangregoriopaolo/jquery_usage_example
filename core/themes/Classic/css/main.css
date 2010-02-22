@@ -124,20 +124,32 @@ categories list
 */
 #wrap #container #contents #categories #categories-list{
 	width: 150px;
-	height: 24px;
+	height: 21px;
 	border: none;
 	background: #fff;
 	position: relative;
 	margin-top:3px;
 	color: #777;
+	line-height: 21px;
 }
 
-#wrap #container #contents #categories #delete_category{
-	background: url("../img/delete.png") no-repeat;
+#wrap #container #contents #categories #delete-category{
+	background: url("../img/new-movie.png") 0 0 no-repeat;
 	display: inline-block;
-	height: 24px;
-	width: 24px;
+	height: 21px;
+	width: 100px;
 	position: relative;
+	margin: 4px 0px 0px 5px;
+	color: #333;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 20px;
+	cursor: pointer;
+}
+
+#wrap #container #contents #categories #delete-category:hover{
+	color: #fff;
+	background:  url("../img/new-movie.png") 0 -21px no-repeat;
 }
 
 /*

@@ -88,9 +88,28 @@
 		});
 	}
 	
+//category menagment---------------------------------------------------------------
 	//change category
 	$("#categories-list").change(function(){
+		if($("option:selected",this).attr("value")==-1)
+			$("#delete-category").hide();
+		else
+			$("#delete-category").show();
 		loadContents();
+	});
+	
+	//delete category
+	$("#delete-category").click(function(){
+		if(confirm("Do you really want to delete this category and all related movies?")){
+			var data=$("#categories-list option:selected").attr("value");
+			$.post("db_delete_category.php","id="+data,function(data){
+				if(data.status=='ok')
+					$.reload();
+				else{
+					Ajax_error(data.code+" : "+data.msg);
+				}
+			},"json");
+		}
 	});
 		
 //tab navigation -------------------------------------------------------------------

@@ -48,7 +48,7 @@
 						<span>Select category:</span>
 						<select id="categories-list">
 						</select>
-						
+						<span id="delete-category" style="display:none;">Delete category</span>
 					</div>
 					<!--end categories-->
 					

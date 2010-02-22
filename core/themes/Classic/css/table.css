@@ -79,17 +79,17 @@ ul> li.movie_thead_del{
 }
 
 ul > li.movie_drag_del{
-	width: 50px;
+	width: 25px;
 	height: 100%;
 	display: block;
-	margin: 0px 2px 0px 2px;
+	margin: 0px 0px 0px 15px;
 	float: left;
 	background: url("../img/delete.png") no-repeat 0 0;
 	cursor: pointer;
 }
 
 .movie_trailer span, .movie_image span{
-	background: url("../img/button-var.png") no-repeat 0 0;
+	/*background: url("../img/button-var.png") no-repeat 0 0;*/
 	display: block;
 	width: 150px;
 	height: 20px;
@@ -102,7 +102,7 @@ ul > li.movie_drag_del{
 }
 
 .movie_trailer span:hover, .movie_image span:hover{
-	background: url("../img/button-var.png") no-repeat 0 -21px;
+	/*background: url("../img/button-var.png") no-repeat 0 -21px;*/
 	color: #fff;
 	cursor: pointer;
 }
