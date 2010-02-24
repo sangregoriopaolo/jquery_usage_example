@@ -80,8 +80,8 @@
 					}
 					//select old selected element if exist
 					$("#categories-list option[value="+selected+"]").attr("selected","selected");
-					//console.debug("loadCategory()");
-					$(document).dequeue("load");
+					//continue in queue
+					$(queue).dequeue("load");
 				}
 				else{
 					Ajax_error(data.code+" : "+data.msg);
@@ -237,6 +237,10 @@
 		reload: function(){
 			$(document).queue("load",function(){
 				loadCategory(this);
+			}).queue("load",function(){ //insert delay for safari
+				setTimeout(function(){
+					$(document).dequeue("load");
+				},5);
 			}).queue("load",function(){
 				//bind click function to sidebar active button
 				$(".sidebarActive").bind("click",click_handler);

@@ -77,15 +77,9 @@
 	
 	-moz-boreder-radius: 3px;
 	-moz-outline-radius: 3px;
+	-webkit-boreder-radius: 3px;
+	-webkit-outline-radius: 3px;
 }
-
-/*.helper{
-	display: block;
-	width: 209px;
-	height: 109px;
-	background: url("../img/helper.png") no-repeat center;
-	text-align: center;
-}*/
 
 .tooltip{
 	background:url("../img/helper.png") no-repeat scroll 0 0 transparent;
@@ -98,15 +92,3 @@
     width:160px;
 	z-index: 600;
 }
-
-/*.helper span{
-	position: absolute;
-	color: #333;
-	font-style: italic;
-	font-weight: bolder;
-	top: 50%;
-	margin:0px;
-	margin-top:-15px;
-	line-height: 30px;
-	
-}*/
