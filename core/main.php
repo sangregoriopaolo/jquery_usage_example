@@ -4,14 +4,19 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link type="text/css" rel="stylesheet" href="css/reset.css" >
 		<link type="text/css" rel="stylesheet" href="css/overlay-apple.css">
+		<!--themeroller css-->
 		<link type="text/css" rel="stylesheet" href="themes/Classic/css/main.css" >
 		<link type="text/css" rel="stylesheet" href="themes/Classic/css/sidebar.css" >
 		<link type="text/css" rel="stylesheet" href="themes/Classic/css/table.css" >
+		<!--favicon-->
+	  <link rel="icon" type="image/x-icon" href="./img/favicon.png" />
+	  <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.png"/>
 		
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/jquery-ui.js"></script>
 		<script type="text/javascript" src="js/jquery-tools.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
+		
 		<title>Movie DB</title>
 	</head>
 	<body>

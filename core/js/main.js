@@ -6,6 +6,8 @@
  //ajax setup --------------------------------------------------------------
 	$.ajaxSetup({
 		timeout: 5000,
+		//compatibility with IE
+		cache: false,
 	});
 	
 	$(".ajax-loader").ajaxSend(function(){

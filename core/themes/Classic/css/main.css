@@ -1,8 +1,9 @@
 html,body {
-	font: 90% Arial, Helvetica, sans-serif;
+	font-family: "Lucida Grande",Tahoma,Arial,sans-serif;
 	color: #000;
     height: 100%;
 	background: #fff;
+	font-size: 10pt;
 }
 
 /*
