@@ -1,6 +1,94 @@
 /**
  * @author Simone
  */
+ (function($){
+	$.fn.extend({
+		Gallery: function(opt){
+			var defaults={target: "#gallery",
+										close: "#galleryClose",
+										wrap: "#galleryWrap",
+										loader: "#galleryLoad",};
+										
+			//extend default options
+			opt=$.extend({},defaults,opt);
+			setEvent(this,opt);
+			
+			//close handler
+			function close_handler(){
+				$(opt.target).expose().close();
+				$(opt.target).fadeOut();
+			}
+						
+			//close event
+			$(opt.close,opt.target).click(close_handler);
+			
+			$(opt.target).hover(function(){
+				$(opt.close,opt.target).fadeIn();
+			},function(){
+				$(opt.close,opt.target).fadeOut();
+			});
+			
+			var handler=this;
+			return this.each(function(){
+			 //correct position
+				var wHeight=($(window).height())/2;
+				var wWidth=($(window).width())/2;
+				var x=wWidth-($(opt.target).width()/2);
+				$(opt.target).css("left",x);
+		
+				//open overlay
+				$(opt.loader,opt.target).show();
+				$(opt.close,opt.target).hide();
+				$(opt.wrap,opt.target).hide();
+				$(opt.wrap,opt.target).attr("src","");
+				$(opt.target).fadeIn();
+				$(opt.target).expose({api: true,color: '#555',}).load();
+				
+				//load image
+				var img=new Image();
+				
+				img.onload=function(){
+				 //calc dimension
+					var mWidth=img.width/2;
+					var mHeight=img.height/2;
+					x=wWidth-mWidth;
+					var y=wHeight-mHeight;
+					//apply dimension
+					$(opt.target).animate({top: y,
+														left: x,
+														width: img.width,
+														height: img.height,},500);
+					//show image after animation finish
+					$(opt.target).queue(function(){
+						$(opt.loader,opt.target).fadeOut();
+						$(opt.wrap,opt.target).attr("src",img.src);
+						$(opt.wrap,opt.target).fadeIn("slow");
+						$(opt.target).dequeue();
+					});
+					delete img;
+				}
+				img.onerror=function(){
+					close_handler();
+					delete img;
+				  $(handler).trigger("onError");
+				}
+				img.src=$(this).attr("ref");						
+			});
+			
+			function setEvent(obj,opt){
+			  $.each(opt,function(tag,fn){
+				  if(typeof(fn)=='function')
+					{
+					 $(obj).unbind(tag);
+					 $(obj).bind(tag,fn);
+					}
+				});
+			}
+		},
+	});
+	
+})(jQuery);
+
 
  $(document).ready(function(){
  //ajax setup --------------------------------------------------------------
@@ -231,6 +319,12 @@
 		                });
 	    }
 	};
+	
+	
+//image view----------------------------------------------------------------------
+$(".movie_image").live("click",function(event){
+	$(this).Gallery({onError: function(){Ajax_error("Unable to load image");},});
+ });
 //on load sequence----------------------------------------------------------------
 	//extend jQuery object to prepare reload queue
 	$.extend({
@@ -252,4 +346,3 @@
 	//load data on document ready
 	$.reload();
  });
-
