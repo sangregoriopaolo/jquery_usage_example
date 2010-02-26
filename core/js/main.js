@@ -7,16 +7,34 @@
 			var defaults={target: "#gallery",
 										close: "#galleryClose",
 										wrap: "#galleryWrap",
-										loader: "#galleryLoad",};
+										loader: "#galleryLoad",
+										onError: function(){$(this).Gallery.Close();},
+							};
 										
 			//extend default options
 			opt=$.extend({},defaults,opt);
+			
+			var setEvent=function (obj,opt){
+			  $.each(opt,function(tag,fn){
+				  if(typeof(fn)=='function')
+					{
+					 $(obj).unbind(tag);
+					 $(obj).bind(tag,fn);
+					}
+				});
+			}
+			
 			setEvent(this,opt);
 			
 			//close handler
-			function close_handler(){
+			var close_handler=function(){
 				$(opt.target).expose().close();
 				$(opt.target).fadeOut();
+			}
+			
+		    this.Gallery.Close=function(){
+				close_handler();
+				return this;
 			}
 						
 			//close event
@@ -29,7 +47,8 @@
 			});
 			
 			var handler=this;
-			return this.each(function(){
+			
+			this.each(function(){
 			 //correct position
 				var wHeight=($(window).height())/2;
 				var wWidth=($(window).width())/2;
@@ -68,22 +87,14 @@
 					delete img;
 				}
 				img.onerror=function(){
-					close_handler();
+					//close_handler();
 					delete img;
-				  $(handler).trigger("onError");
+				    $(handler).trigger("onError",{src: img.src,msg: "Unable to load image",});
 				}
 				img.src=$(this).attr("ref");						
 			});
 			
-			function setEvent(obj,opt){
-			  $.each(opt,function(tag,fn){
-				  if(typeof(fn)=='function')
-					{
-					 $(obj).unbind(tag);
-					 $(obj).bind(tag,fn);
-					}
-				});
-			}
+			return this.Gallery;
 		},
 	});
 	
@@ -323,7 +334,12 @@
 	
 //image view----------------------------------------------------------------------
 $(".movie_image").live("click",function(event){
-	$(this).Gallery({onError: function(){Ajax_error("Unable to load image");},});
+	$(this).Gallery({
+		onError:function(event,error){
+			$(this).Gallery.Close();
+			Ajax_error(error.msg+" : "+error.src);
+		}
+	});
  });
 //on load sequence----------------------------------------------------------------
 	//extend jQuery object to prepare reload queue

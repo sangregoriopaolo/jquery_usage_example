@@ -16,48 +16,7 @@
 		<script type="text/javascript" src="js/jquery-ui.js"></script>
 		<script type="text/javascript" src="js/jquery-tools.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
-		
-		<style type="text/css">
-		  body #gallery{
-			 position: absolute;
-			 z-index: 1000;
-			 display: block;
-			 background: #333;
-			 top: 100px;
-			 left:0px;
-			 width: 200px;
-			 height: 400px;
-			}
-			
-			#gallery #galleryClose{
-			 display: block;
-			 float: right;
-			 top: 0px;
-			 height: 30px;
-			 width: 100px;
-			 left: 50%;
-			 margin-left: -50px;
-			 color: #fff;
-			 font-weight: bold;
-			 position: absolute;
-			 text-align: center;
-			 line-height: 30px;
-			 background: #333;
-			 background: rgba(100,100,100,0.6);
-			 border: 1px solid #666;
-			 -moz-border-radius: 5px;
-			 -webkit-border-radius: 5px;
-			 cursor: pointer;
-			}
-			
-			#gallery #galleryLoad{
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			margin-left: -25px;
-			margin-top: -12px;
-			}
-		</style>
+
 		<title>Movie DB</title>
 	</head>
 	
