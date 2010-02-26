@@ -309,6 +309,20 @@
 	 });
 	 
 //delete movie--------------------------------------------------------------------
+
+    show_movie=function(movie_id) {
+        jQuery.ajax({
+            dataType: 'html',
+			type: 'GET',
+			url: 'show_movie.php?movie_id=' + movie_id,
+			success: function(data,status,XHR){
+				Overlay.getOverlay().find(".contentWrap").html(data);
+				Overlay.load();
+			}
+        })
+    }
+
+//delete movie--------------------------------------------------------------------
    delete_movie=function (movie_id) {
 	     if(confirm("Do you really want to delete this movie?")) {
 	         movieContent = jQuery("#movie_" + movie_id).html();
