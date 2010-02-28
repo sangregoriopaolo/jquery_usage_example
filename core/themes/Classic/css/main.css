@@ -52,24 +52,6 @@ page header wrap
 }
 
 /*
-header themeroller
-*/
-#wrap #header #headerWrap #themeRoller{
-	position: relative;
-	float: right;
-	top: 0;
-	border: 4px solid #ddd;
-	border-top: 0px;
-	color: #777;
-	padding: 5px;
-	
-	-moz-border-radius-bottomleft: 4px;
-	-moz-border-radius-bottomright: 4px;
-	-webkit-border-radius-bottomleft: 4px;
-	-webkit-border-radius-bottomright: 4px;
-}
-
-/*
 contents element
 */
 #wrap #container #contents{

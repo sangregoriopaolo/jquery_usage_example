@@ -25,13 +25,7 @@
 			<div id="header">
 				<div id="headerWrap">
 					<img title="My Movies" alt="logo" src="img/logo.png" style="margin-left: 50px;">
-					<div id="themeRoller">
-						<span>Select theme:</span>
-						<select style="width: 100px; border: none; color: #777;">
-							<option>Classic</option>
-							<option>Film</option>
-						</select>
-					</div>
+					
 				</div>
 			</div>
 			<!--end header-->
@@ -95,7 +89,8 @@
 			<!--gallery-->
 			<div id="gallery" style="display: none">
 				
-				<img id="galleryWrap"></img>
+				<!-- the external image is loaded inside this img tag-->
+				<img id="galleryWrap" alt="external image"/>
 				
 				<span id="galleryClose" style="display: none">Close</span>
 				
@@ -106,12 +101,12 @@
 			<div id="ajax_error">
 				<div>
 					<h2>Errore</h2>
-					<p id="error_desc">errrore imprevisto</p>
+					<p id="error_desc">Errrore imprevisto</p>
 					<button class="close">Chiudi</button>
 				</div>
   			</div>
 
-		<!--end Jquery object-->
+		<!--end jQuery object-->
 		
 	</body>
 </html>
