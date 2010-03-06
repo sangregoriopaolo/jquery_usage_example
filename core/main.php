@@ -16,6 +16,7 @@
 		<script type="text/javascript" src="js/jquery-ui.js"></script>
 		<script type="text/javascript" src="js/jquery-tools.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/swfobject.js"></script>
 
 		<title>Movie DB</title>
 	</head>

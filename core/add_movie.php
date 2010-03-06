@@ -287,10 +287,10 @@ $categories = $db->query("SELECT * FROM categories");
 		</li>
 		<li class="rightSide">
 			<label class="desc" for="movie_description">Description</label>
-			<textarea class="fieldArea"></textarea>
+			<textarea class="fieldArea" name="movie_description"></textarea>
 		</li>
 		<li class="leftSide">
-			<label class="desc" for="movie_trailer_url">Trailer URL</label>
+			<label class="desc" for="movie_trailer_url">Trailer YouTube Code</label>
             <input class="fieldText" type="text" name="movie_trailer_url" autocomplete="off"/>
 		</li>
 		<li class="rightSide">
