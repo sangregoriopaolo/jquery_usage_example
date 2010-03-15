@@ -35,8 +35,8 @@
 
 				<div id="sidebar">
 					<div id="sidebarWrap">
-					  <div class="sidebarButton sidebarActive" title="0"><span class="sidebarButtonText">My Film</span></div>
-					  <div class="sidebarButton" title="1"><span class="sidebarButtonText">Favourites</span></div>
+					  <div class="sidebarButton sidebarActive" ref="0" title="My Film"><span class="sidebarButtonText">My Film</span></div>
+					  <div class="sidebarButton" ref="1" title="Favourites"><span class="sidebarButtonText">Favourites</span></div>
 					</div>
 				</div>
 				<!--end sidebar-->
@@ -49,7 +49,7 @@
 						<span>Select category:</span>
 						<select id="categories-list">
 						</select>
-						<span id="delete-category" style="display:none;">Delete category</span>
+						<span id="delete-category" >Delete category</span>
 					</div>
 					<!--end categories-->
 					

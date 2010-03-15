@@ -34,7 +34,8 @@
 
 #overlay .contentWrap{
       height:500px; 
-      overflow-y: auto; 
+      overflow-y: auto;
+	  overflow-x: hidden; 
 }
 
 #ajax_error{

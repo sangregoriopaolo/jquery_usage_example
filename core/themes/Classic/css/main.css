@@ -22,7 +22,7 @@ page container to push footer
 main data container
 */
 #wrap #container{
-	width: 970px;
+	width: 874px;
 	/*overlay on header*/
 	margin: -37px auto 0 auto;
 	position: relative;
@@ -47,7 +47,7 @@ page header wrap
 #wrap #header #headerWrap{
 	position: relative;
 	margin: auto;
-	width: 970px;
+	width: 874px;
 	background: transparent;
 }
 

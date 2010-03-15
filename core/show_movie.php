@@ -10,206 +10,29 @@ $trailer_url = "http://www.youtube.com/v/" . $film['trailer_url'];
 
 <style type="text/css">
     
-    p {
-        padding-top:5px;
-        padding-bottom:5px;
+    #movie_desc p {
+        padding: 5px;
+        
+        font-size: 120%;
+        font-style: italic;
     }
-    
-	#f_new_movie{
-		width: 600px;
-		position: relative;
-		background: transparent;
-		font-size: 125%;
-	}
 
-	.title{
+	#movie_desc .title{
 		font-size: 160%;
 		clear: left;
-		margin: 0 0 5px 4px;
+		margin: auto;
+		padding: 5px;
 		font-weight: normal;
+		text-align: center;
 	}
 	
 	.divisor{
 		width: 98%;
 		border: 1px dotted #ccc;
-		margin: 2px;
-	}
-	
-	#f_new_movie ul{
-		position: relative;
-		width: 100%;
-	}
-	
-	#f_new_movie ul .leftSide{
-		float: left;
-		clear: left;
-		display: block;
-		width: 46%;
-		padding: 5px 2px 5px 2px;
-	}
-	
-	#f_new_movie ul .rightSide{
-		float: right;
-		clear: none;
-		display: block;
-		width: 46%;
-		padding: 5px 2px 5px 2px;
-	}
-	
-	.desc{
-		position: relative;
-		display: block;
-		font-weight: bold;
-		font-size: 90%;
-		color: #222;
-		line-height: 150%;
-		padding: 0 0 2px 4px;
-	}
-	
-	.fieldText{
-		width: 100%;
-		position: relative;
-		display: block;
-		background: #a0dc4f;
-		color: #fff;
-		border: 0px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
-		font-size: 100%;
-		padding: 3px 2px 3px 4px;
-		margin: 0 0 0 2px;
-	}
-	
-	.fieldSelect{
-		width: 88%;
-		position: relative;
-		display: block;
-		background: #a0dc4f;
-		color: #fff;
-		border: 0px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
-		font-size: 100%;
-		padding: 3px 5px 3px 4px;
-		margin: 0 0 0 2px;
-		float: left;
-	}
-	
-	.add{
-		float:right;
-		clear: none;
-		display: block;
-		width: 24px;
-		height: 24px;
-		background: url("./img/add.png") 0 0 no-repeat;
-		margin-top: 2px;
-	}
-	
-	.fieldArea{
-		width: 100%;
-		position: relative;
-		display: block;
-		background: #a0dc4f;
-		color: #fff;
-		border: 0px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
-		font-size: 100%;
-		padding: 3px 2px 3px 4px;
-		margin: 0 0 0 2px;
-		height: 9em;
-	}
-	
-	.checklist {
-	    /*float: left;
-	    margin-right: 10px;*/
-		margin: auto;
-	    background: url(img/checkboxbg.gif) no-repeat 0 0;
-	    width: 105px;
-	    height: 150px;
-	    position: relative;
-	    font: normal 11px/1.3 "Lucida Grande","Lucida","Arial",Sans-serif;
-	}
-	
-	.selected {
-	background-position: -105px 0;
-	}
-
-	.selected .checkbox-select {
-		display: none;
-	}
-
-	.checkbox-select {
-		display: block;
-		float: left;
-		position: absolute;
-		top: 118px;
-		left: 10px;
-		width: 85px;
-		height: 23px;
-		background: url(img/select.gif) no-repeat 0 0;
-		text-indent: -9999px;
-	}
-
-	.checklist  input {
-		display: none;
-	}
-
-	a.checkbox-deselect {
-		display: none;
-		color: white;
-		font-weight: bold;
-		text-decoration: none;
-		position: absolute;
-		top: 120px;
-		right: 10px;
-	}
-
-	.selected a.checkbox-deselect {
-		display: block;
-	}
-
-	.checklist label {
-		display: block;
-		text-align: center;
-		padding: 8px;
-	}
-	
-	#f_new_movie ul  .l_sub{
-		width: 100%;
-		display: block;
+		margin: 0px;
+		margin-top: 7px;
+		margin-bottom: 7px;
 		clear: both;
-		padding-top: 20px;
-		margin: 2px;
-	}
-	
-	.b_sub{
-		margin:auto;
-		display: block;
-		width: 100px;
-		height: 30px;
-		border: 0px;
-		background: #3fa2c6;
-		color: #fff;
-		font-weight: bold;
-		line-height: 25px;
-		font-size: 120%;
-		-moz-border-radius: 8px;
-		-webkit-border-radius: 8px;
-		cursor: pointer;
-	}
-	
-	#image_container {
-	    text-align: center;
-	}
-	
-	#description_container {
-	    padding: 5px;
-	    width:580px;
-	    background: #DEDEDE;
-	    border: 1px dashed;
-	    margin-top: 10px;
-	    margin-bottom: 10px;
 	}
 
     .toggle .toggle_link,
@@ -225,9 +48,14 @@ $trailer_url = "http://www.youtube.com/v/" . $film['trailer_url'];
         padding-top:10px;
         display:block;
     }
-
+    
+    #movie_desc .edit{
+    	background: transaperent;
+    	width: 90%;
+    }
 </style>
 
+<script type="text/javascript" src="./js/jquery-jeditable.js"></script>
 <script type="text/javascript">
 
     function toggle_trailer() {
@@ -246,29 +74,165 @@ $trailer_url = "http://www.youtube.com/v/" . $film['trailer_url'];
              {},
              {wmode:"opaque"}
          );
+
+         $(".edit_text").editable("db_update.php",{
+			submit: "Ok",
+			cancel: "Cancel",
+			indicator: "Updating...",
+			tooltip: "Click to edit",
+			type: "text",
+			cssclass: "edit",
+			height: "35",
+			id: "attr",
+			submitdata: {id: $("#movie_id").attr("value")},
+         });
+
+         $(".edit_select").editable("db_category_select.php",{
+			submit: "Ok",
+			cancel: "Cancel",
+			indicator: "Updating...",
+			tooltip: "Click to edit",
+			type: "select",
+			cssclass: "edit",
+			height: "35",
+			id: "attr",
+			submitdata: {id: $("#movie_id").attr("value")},
+			loadurl: "db_category_select.php",
+         });
+
+         $(".edit_area").editable("db_update.php",{
+ 			submit: "Ok",
+ 			cancel: "Cancel",
+ 			indicator: "Updating...",
+ 			tooltip: "Click to edit",
+ 			type: "textarea",
+ 			cssclass: "edit",
+ 			height: "35",
+ 			id: "attr",
+ 			submitdata: {id: $("#movie_id").attr("value")},
+ 			rows: "10",
+ 			cols: "50",
+          });
+
+         $(".edit_url").click(function(){
+			$(".image_url").slideToggle();
+         });
+
+     	$(".new_cat").click(function() {
+    	    cat_name = window.prompt('Category name:', 'New category');
+    	    if((cat_name == '') || (cat_name == null))
+    	        return;
+
+    	    data = {
+    	        cat_name: cat_name
+    	    };
+    	    jQuery.ajax({
+                            type: 'POST',
+                            url: 'db_add_category.php',
+                            data: data,
+                            dataType: 'json',
+                            success: function(data, text_status, XHR) {
+                                if(data.status != 'ok') {
+                                    Ajax_error('Unable to add new the category');   
+                                }
+                            }
+    	                });
+    	});
      });
 </script>
 
-<h2 class="title"><?php echo $film['title'] ?></h2>
-<div class="divisor"></div>
-<div id="image_container">
-    <img src="<?php echo $film['image']; ?>" height="200">
-</div>
-<h2 class="title">Trailer</h2>
-<div class="divisor"></div>
-<div class="trailer_container">
+<style type="text/css">
+	#movie_desc .description{
+		padding: 5px;
+		position: relative;
+		vertical-align:super;
+	}
+	
+	#movie_desc .image{
+	 float: right;
+	 position: relative;
+	 display: block;
+	 marign-left: 5px;
+	 min-width: 200px;
+	 height: 220px;
+	
+	}
+	
+	#movie_desc label{
+		font-size: 90%;
+		color: #c0c0c0;
+		padding: 2px;
+		display: block;
+		widht: 100%;
+		text-align: center;
+	}
+	
+	#movie_desc .image_url{
+		display: block;
+		width: 98%;
+		font-size: 100%;
+		text-align: right;
+		padding: 5px 0 5px 0;
+	}
+	
+	#movie_desc .edit_url{
+		cursor: pointer;
+	}
+	
+	#movie_desc .new_cat{
+	float: left;
+	margin: 4px 5px 5px 5px;
+	color: #333;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 20px;
+	display: block;
+	width:100px;
+	height: 21px;
+	text-align: center;
+	background: url("./img/new-category.png") 0 0 transparent;
+	}
+
+	#movie_desc .new_cat:hover{
+	color: #fff;
+	background: url("./img/new-category.png") 0 25px transparent;
+	cursor: pointer;
+	}
+</style>
+
+<div id="movie_desc">
+	
+	<input type="hidden" id="movie_id" value="<?php echo $film['movie_id'];?>"></input>
+	<p class="title edit_text" id="title"><?php echo $film['title'];?></p>
+	
+	<div class="divisor"></div>
+	
+	<span id="image" class="image_url edit_text" style="display: none;"><?php echo $film['image']?></span>
+	<div class="image">
+		<label class="edit_url" >Image (Click to show URL)</label>
+		<img src="<?php echo $film['image']; ?>" height="200" >
+	</div>
+
+	<label>Description</label>
+	<span class="description edit_area" id="description"><?php echo $film['description'];?></span> 
+	
+	<div class="divisor"></div>
+	
+	<p style="float: left;">Director: </p><p id="director" class="edit_text"><?php echo $film['director'];?></p>
+	<p style="float: left;">Producer: </p><p id="producer" class="edit_text"><?php echo $film['producer'];?></p>
+	<p style="float: left;">Category: </p><p id="category_id" class="edit_select"><?php echo $film['name']?></p>
+	<span class="new_cat">New Category</span>
+	
+	<div class="divisor"></div>
+	
+	<div class="trailer_container">
     <span id="trailer_off" class="toggle"><a href="#" class="toggle_link" onclick="toggle_trailer();">Show trailer</a></span>
     <span id="trailer_on" style="display:none">
         <div id="trailer_container"></div>
         <span class="toggle"><a href="#" class="toggle_link" onclick="toggle_trailer();">Hide trailer</a></span>
     </span>
+    <label style="font-size: 100%;">Trailer Code:</label><p style="color:#c0c0c0; text-align: center;" class="edit_text" id="trailer_url"><?php echo $film['trailer_url'];?></p>
+    
 </div>
-<h2 class="title">Description</h2>
-<div class="divisor"></div>
-<div id="description_container">
-    <p><strong>Director</strong>
-    <?php echo $film['director']; ?></p>
-    <p><strong>Producer</strong>
-    <?php echo $film['producer']; ?></p>
-    <?php echo $film['description']; ?>
+	 
 </div>

@@ -11,7 +11,7 @@ $categories = $db->query("SELECT * FROM categories");
 		 var data=$(this).serialize();
 		 $.post($(this).attr("action"),data,function(data,msg){
 			if(data.status=='ok'){
-				$.reload();
+				//$.reload();
 				Overlay.close();
 			}else
 			Ajax_error(data.code+" : "+data.msg);
@@ -49,8 +49,7 @@ $categories = $db->query("SELECT * FROM categories");
                                 update_and_select_category(data.new_id, data.new_name);
                             }
                             else {
-                                alert('Unable to add new the category');
-                                alert(data.msg);
+                            	Ajax_error('Unable to add new the category');
                             }
                         }
 	                });

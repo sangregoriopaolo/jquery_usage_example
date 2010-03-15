@@ -15,6 +15,7 @@
 	  <div class="movie_table">
         <!--table header-->
 		<ul class="movie_thead">
+		  <li class="dragger"></li>
           <li class="movie_thead_li">Title</li>
           <li class="movie_thead_li">Category</li>
           <li class="movie_thead_li">Details</li>
@@ -25,6 +26,7 @@
 	  while( $film = $films->fetchArray(SQLITE3_ASSOC) )
 	  { ?>
 	  	<ul class="movie_drag" id="movie_<?php echo $film['movie_id']; ?>">
+	  		<li class="dragger"><img src="./img/grippy.png" /></li>
 	  		<li style="display: none;" class="movie_id"><?php echo $film['movie_id'];?></li>
             <li class="movie_drag_li movie_title"><?php echo $film['title']; ?></li>
             <li class="movie_drag_li movie_category"><?php echo $film['name']; ?></li>

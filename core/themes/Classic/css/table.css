@@ -20,6 +20,7 @@ div > div.movie_table ul.movie_thead{
  color: #55595C;
  font-style: italic;
  font-weight: bold;
+ cursor: default;
 }
 
 /*
@@ -74,7 +75,7 @@ ul> li.movie_thead_del{
 	width: 50px;
 	height: 100%;
 	display: block;
-	margin: 0px 2px 0px 2px;
+	margin: 0px 0px 0px 2px;
 	float: left;
 }
 
@@ -103,5 +104,14 @@ ul > li.movie_drag_del{
 .movie_trailer span:hover, .movie_image span:hover{
 	/*background: url("../img/button-var.png") no-repeat 0 -21px;*/
 	color: #fff;
+	cursor: pointer;
+}
+
+ul li.dragger{
+	float:left;
+	height: 100%;
+	width: 7px;
+	display: block;
+	padding: 0 5px 0 5px;
 	cursor: pointer;
 }

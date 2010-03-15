@@ -5,11 +5,13 @@
 	$.fn.extend({
 		Gallery: function(opt){
 			var defaults={target: "#gallery",
-										close: "#galleryClose",
-										wrap: "#galleryWrap",
-										loader: "#galleryLoad",
-										onError: function(){$(this).Gallery.Close();},
-							};
+						  close: "#galleryClose",
+						  wrap: "#galleryWrap",
+						  loader: "#galleryLoad",
+						  onError: function(){$(this).Gallery.Close();},
+						  expose: {color: '#555' },
+						  timeout: 5000,
+						};
 										
 			//extend default options
 			opt=$.extend({},defaults,opt);
@@ -61,13 +63,15 @@
 				$(opt.wrap,opt.target).hide();
 				$(opt.wrap,opt.target).attr("src","");
 				$(opt.target).fadeIn();
-				$(opt.target).expose({api: true,color: '#555',}).load();
+				$.extend(opt.expose,{api:true,closeOnClick: false, closeOnEsc: false,});
+				$(opt.target).expose(opt.expose).load();
 				
 				//load image
 				var img=new Image();
 				
 				img.onload=function(){
-				 //calc dimension
+					clearTimeout(Timer);
+				    //calc dimension
 					var mWidth=img.width/2;
 					var mHeight=img.height/2;
 					x=wWidth-mWidth;
@@ -91,7 +95,11 @@
 					delete img;
 				    $(handler).trigger("onError",{src: img.src,msg: "Unable to load image",});
 				}
-				img.src=$(this).attr("ref");						
+				img.src=$(this).attr("ref");	
+				var Timer=setTimeout(function(){
+					delete img;
+				    $(handler).trigger("onError",{src: img.src,msg: "Unable to load image",});
+				},opt.timeout);					
 			});
 			
 			return this.Gallery;
@@ -138,6 +146,9 @@
 			zIndex: 500,
 			},
 		effect: 'apple',
+		onClose: function(){
+			$.reload();
+		},
 	});
 	 	
 //contents loader ----------------------------------------------------------
@@ -146,7 +157,7 @@
 				url: "db_list_movies.php",
 				type: "GET",
 				dataType: "html",
-				data: "favourite="+$(".sidebarActive").attr("title")+"&category="+$("#categories-list option:selected").attr("value"),
+				data: "favourite="+$(".sidebarActive").attr("ref")+"&category="+$("#categories-list option:selected").attr("value"),
 				beforeSend: function(){
 					$("#contents-body").fadeOut("fast");
 				},
@@ -157,11 +168,17 @@
   						$(this).add_drag();
   					});
 					$("#contents-body").fadeIn("slow");
+					//when data is loaded scrollpage at prevous position
+					$("#contents-body").queue(function(){
+						$(window).scrollTop(scroll_y);
+						$(this).dequeue();
+					});
 				},
 			});
 	}
 	
 	function loadCategory(queue){
+		$("#delete-category").hide();
 		//save selected element
 		if($("#categories-list option:selected").length!=0)
 			var selected=$("#categories-list option:selected").attr("value");
@@ -189,7 +206,7 @@
 		});
 	}
 	
-//category menagment---------------------------------------------------------------
+//category managment---------------------------------------------------------------
 	//change category
 	$("#categories-list").change(function(){
 		if($("option:selected",this).attr("value")==-1)
@@ -244,6 +261,18 @@
 		$("#sidebarWrap").stop().slideToggle(500,"easeOutBounce");
 	});*/
 	
+	//scroll bar
+	var base=$("#sidebarWrap").offset().top-10;
+	$(window).scroll(function(){
+		var offset=$(window).scrollTop();
+		var sp=offset-base;
+		if(sp<0)
+		  sp=0;
+		$("#sidebarWrap").stop().animate({"margin-top": sp,},500);
+	});
+	
+	$().scr
+	
 //drag & drop ---------------------------------------------------------------------
 	   
 	//extend jQuery object to perform live bind with helper
@@ -254,8 +283,9 @@
 	   	    cursor: 'move',
 			cursorAt: { top: -5, left: -5 },
 	   		helper: function(event) {
-		   		return $('<div class="tooltip">Titolo: '+$('.movie_title',this).html()+'</div>');
+		   		return $('<div class="tooltip">'+$('.movie_title',this).html()+'</div>');
 	   		},
+			handle: '.dragger',
 		});
 		return this;
 	}
@@ -268,7 +298,7 @@
 		//when element is dropped
 		drop: function(event,ui){
 			//data to send
-			var data="id="+ui.draggable.find(".movie_id").html()+"&favourite="+$(this).attr("title");
+			var data="id="+ui.draggable.find(".movie_id").html()+"&favourite="+$(this).attr("ref");
 			var movieContent= ui.draggable.html();
 			
 			$.ajax({
@@ -308,7 +338,7 @@
 		});
 	 });
 	 
-//delete movie--------------------------------------------------------------------
+//movie description--------------------------------------------------------------------
 
     show_movie=function(movie_id) {
         jQuery.ajax({
@@ -352,13 +382,14 @@ $(".movie_image").live("click",function(event){
 		onError:function(event,error){
 			$(this).Gallery.Close();
 			Ajax_error(error.msg+" : "+error.src);
-		}
+		},
 	});
  });
 //on load sequence----------------------------------------------------------------
 	//extend jQuery object to prepare reload queue
 	$.extend({
 		reload: function(){
+			scroll_y=$(window).scrollTop();
 			$(document).queue("load",function(){
 				loadCategory(this);
 			}).queue("load",function(){ //insert delay for safari

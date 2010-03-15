@@ -22,4 +22,6 @@
    }
    
    echo json_encode($response);
+   
+   disconnect($db);
 ?>
