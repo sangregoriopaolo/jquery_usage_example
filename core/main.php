@@ -9,14 +9,16 @@
 		<link type="text/css" rel="stylesheet" href="themes/Classic/css/sidebar.css" >
 		<link type="text/css" rel="stylesheet" href="themes/Classic/css/table.css" >
 		<!--favicon-->
-	  <link rel="icon" type="image/x-icon" href="./img/favicon.png" />
-	  <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.png"/>
+	    <link rel="icon" type="image/x-icon" href="./img/favicon.png" />
+	    <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.png"/>
 		
 		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/jquery-ui.js"></script>
-		<script type="text/javascript" src="js/jquery-tools.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/jquery.ui.js"></script>
+		<script type="text/javascript" src="js/jquery.tools.js"></script>
 		<script type="text/javascript" src="js/swfobject.js"></script>
+		<script type="text/javascript" src="js/jquery.gallery.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+
 
 		<title>Movie DB</title>
 	</head>

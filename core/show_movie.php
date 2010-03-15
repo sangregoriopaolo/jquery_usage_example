@@ -53,9 +53,66 @@ $trailer_url = "http://www.youtube.com/v/" . $film['trailer_url'];
     	background: transaperent;
     	width: 90%;
     }
+	
+	#movie_desc .description{
+		padding: 5px;
+		position: relative;
+		vertical-align:super;
+	}
+	
+	#movie_desc .image{
+	 float: right;
+	 position: relative;
+	 display: block;
+	 marign-left: 5px;
+	 min-width: 200px;
+	 height: 220px;
+	
+	}
+	
+	#movie_desc label{
+		font-size: 90%;
+		color: #c0c0c0;
+		padding: 2px;
+		display: block;
+		widht: 100%;
+		text-align: center;
+	}
+	
+	#movie_desc .image_url{
+		display: block;
+		width: 98%;
+		font-size: 100%;
+		text-align: right;
+		padding: 5px 0 5px 0;
+	}
+	
+	#movie_desc .edit_url{
+		cursor: pointer;
+	}
+	
+	#movie_desc .new_cat{
+	float: left;
+	margin: 4px 5px 5px 5px;
+	color: #333;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 20px;
+	display: block;
+	width:100px;
+	height: 21px;
+	text-align: center;
+	background: url("./img/new-category.png") 0 0 transparent;
+	}
+
+	#movie_desc .new_cat:hover{
+	color: #fff;
+	background: url("./img/new-category.png") 0 25px transparent;
+	cursor: pointer;
+	}
 </style>
 
-<script type="text/javascript" src="./js/jquery-jeditable.js"></script>
+<script type="text/javascript" src="./js/jquery.jeditable.js"></script>
 <script type="text/javascript">
 
     function toggle_trailer() {
@@ -140,65 +197,6 @@ $trailer_url = "http://www.youtube.com/v/" . $film['trailer_url'];
     	});
      });
 </script>
-
-<style type="text/css">
-	#movie_desc .description{
-		padding: 5px;
-		position: relative;
-		vertical-align:super;
-	}
-	
-	#movie_desc .image{
-	 float: right;
-	 position: relative;
-	 display: block;
-	 marign-left: 5px;
-	 min-width: 200px;
-	 height: 220px;
-	
-	}
-	
-	#movie_desc label{
-		font-size: 90%;
-		color: #c0c0c0;
-		padding: 2px;
-		display: block;
-		widht: 100%;
-		text-align: center;
-	}
-	
-	#movie_desc .image_url{
-		display: block;
-		width: 98%;
-		font-size: 100%;
-		text-align: right;
-		padding: 5px 0 5px 0;
-	}
-	
-	#movie_desc .edit_url{
-		cursor: pointer;
-	}
-	
-	#movie_desc .new_cat{
-	float: left;
-	margin: 4px 5px 5px 5px;
-	color: #333;
-	font-size: 11px;
-	font-weight: bold;
-	line-height: 20px;
-	display: block;
-	width:100px;
-	height: 21px;
-	text-align: center;
-	background: url("./img/new-category.png") 0 0 transparent;
-	}
-
-	#movie_desc .new_cat:hover{
-	color: #fff;
-	background: url("./img/new-category.png") 0 25px transparent;
-	cursor: pointer;
-	}
-</style>
 
 <div id="movie_desc">
 	
