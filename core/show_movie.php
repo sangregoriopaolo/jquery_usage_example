@@ -226,7 +226,10 @@ $trailer_url = "http://www.youtube.com/v/" . $film['trailer_url'];
 	<div class="trailer_container">
     <span id="trailer_off" class="toggle"><a href="#" class="toggle_link" onclick="toggle_trailer();">Show trailer</a></span>
     <span id="trailer_on" style="display:none">
-        <div id="trailer_container"></div>
+        <div id="trailer_container">
+        	<h1>Get Adobe Flash Player</h1>
+			<p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+        </div>
         <span class="toggle"><a href="#" class="toggle_link" onclick="toggle_trailer();">Hide trailer</a></span>
     </span>
     <label style="font-size: 100%;">Trailer Code:</label><p style="color:#c0c0c0; text-align: center;" class="edit_text" id="trailer_url"><?php echo $film['trailer_url'];?></p>

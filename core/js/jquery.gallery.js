@@ -62,7 +62,6 @@
 				$(opt.target).fadeIn();
 				$.extend(opt.expose,{api:true,closeOnClick: false, closeOnEsc: false,});
 				$(opt.target).expose(opt.expose).load();
-				
 				//load image
 				var img=new Image();
 				
