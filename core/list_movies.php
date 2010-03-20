@@ -5,7 +5,9 @@ include('includes/config.php');
 $db = connect();
 
 #Selecting all the films from the database
-$films = $db->query('SELECT * FROM movies');
+$query="SELECT movies.id as movie_id,* FROM movies LEFT JOIN categories ON categories.id = movies.category_id";
+$films = $db->query($query);
+
 
 # ---- TEMPLATE START ----
 ?>
@@ -23,7 +25,7 @@ $films = $db->query('SELECT * FROM movies');
         <tr>
             <th class="movie_title">Title</th>
             <th class="movie_description">Description</th>
-            <th class="movie_trailer">Trailer</th>
+            <th class="movie_trailer">Category</th>
             <th class="movie_image">Image</th>
             <th class="movie_image"></th>
         </tr>
@@ -31,7 +33,7 @@ $films = $db->query('SELECT * FROM movies');
         <tr class="movie_row">
             <td class="movie_title"><?php echo $film['title'] ?></td>
             <td class="movie_description"><?php echo $film['description'] ?></td>
-            <td class="movie_trailer"><?php echo $film['trailer_url'] ?></td>
+            <td class="movie_trailer"><?php echo $film['name'] ?></td>
             <td class="movie_image"><?php echo $film['image'] ?></td>
             <td class="movie_delete"><a href="delete_movie.php?movie_id=<?php echo $film['id'] ?>">x</a></td>
         </tr>

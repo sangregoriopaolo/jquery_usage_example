@@ -12,12 +12,24 @@ if($action == 'Save') {
     $description = $db->escapeString($_POST['movie_description']);
     $trailer_url = $db->escapeString($_POST['movie_trailer_url']);
     $image_url = $db->escapeString($_POST['movie_image_url']);
+	$director = $db->escapeString($_POST['director']);
+	$producer = $db->escapeString($_POST['producer']);
+	$cat = $db->escapeString($_POST['category']);
     
-    if($db->exec("INSERT INTO movies (title, description, trailer_url, image) VALUES ('$title', '$description', '$trailer_url', '$image_url')"))
+    if($db->exec("INSERT INTO movies (title, description, trailer_url, image,director,producer,category_id) VALUES ('$title', '$description', '$trailer_url', '$image_url','$director','$producer',$cat)"))
     {
         header('Location: list_movies.php?saved=1');
     }
     else
+    {
+        header('Location: list_movies.php?err=1');
+    }
+}
+else
+{
+//new film
+	$query="SELECT * FROM categories";
+	if(!$ris=$db->query($query))
     {
         header('Location: list_movies.php?err=1');
     }
@@ -52,16 +64,35 @@ if($action == 'Save') {
                 <label for="movie_title">Title</label><br>
                 <input type="text" name="movie_title" />
             </li>
+	        <li>
+                <label for="director">Director</label><br>
+                <input type="text" name="director" />
+            </li>
+	        <li>
+                <label for="producer">Producer</label><br>
+                <input type="text" name="producer" />
+            </li>
             <li>
                 <label for="movie_description">Description</label><br>
                 <textarea name="movie_description" rows="10"></textarea>
             </li>
+			<li>
+                <label for="category">Category</label><br>
+                <select name="category" >
+					<?php 
+					while($cat=$ris->fetchArray())
+					{
+					 echo "<option value='".$cat['id']."'>".$cat['name']."</option>";
+					}
+					?>
+				</select>
+            </li>
             <li>
-                <label for="movie_description">Trailer URL</label><br>
+                <label for="movie_trailer_url">Trailer URL</label><br>
                 <input type="text" name="movie_trailer_url" />
             </li>
             <li>
-                <label for="movie_description">Image URL</label><br>
+                <label for="movie_image_url">Image URL</label><br>
                 <input type="text" name="movie_image_url" />
             </li>
             <li id="submit_container">
