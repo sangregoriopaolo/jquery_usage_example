@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     
 <head>
-    <title>Films</title>
+    <title>Movie DB</title>
     <link rel="stylesheet" href="css/master.css" type="text/css" media="screen">
 </head>
 
 <body>
-    <h1>Movie Store</h1>
+    <h1>Movie DB</h1>
     <div id="body_container">

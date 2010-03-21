@@ -33,20 +33,32 @@ body {
     margin-bottom: 20px;
 }
 
+table{
+text-align:center;
+width: 874px;
+border: 5px solid #ddd;
+}
+
 .movie_title {
-    width: 200px;
+    width: 22%;
 }
-.movie_description {
-    width: 500px;
+.movie_category {
+    width: 22%;
 }
-.movie_trailer {
-    width: 100px;
+.movie_dettails {
+    width: 22%;
 }
 .movie_image {
-    width: 100px;
+    width: 22%;
 }
 
 .movie_delete a {
     text-decoration: none;
     color: #FF0000;
+}
+
+.center{
+ margin: auto;
+ width: 874px;
+ padding: 10px;
 }

@@ -18,11 +18,11 @@ if($action == 'Save') {
     
     if($db->exec("INSERT INTO movies (title, description, trailer_url, image,director,producer,category_id) VALUES ('$title', '$description', '$trailer_url', '$image_url','$director','$producer',$cat)"))
     {
-        header('Location: list_movies.php?saved=1');
+        header('Location: list_movies.php?saved=1&cat=-1&fav=0');
     }
     else
     {
-        header('Location: list_movies.php?err=1');
+        header('Location: list_movies.php?err=1&cat=-1&fav=0');
     }
 }
 else
@@ -31,7 +31,7 @@ else
 	$query="SELECT * FROM categories";
 	if(!$ris=$db->query($query))
     {
-        header('Location: list_movies.php?err=1');
+        header('Location: list_movies.php?err=1&cat=-1&fav=0');
     }
 }
 
