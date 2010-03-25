@@ -86,6 +86,7 @@ else
 					}
 					?>
 				</select>
+				<a href="add_category.php">Add Category</a>
             </li>
             <li>
                 <label for="movie_trailer_url">Trailer URL</label><br>

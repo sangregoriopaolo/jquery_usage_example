@@ -52,6 +52,10 @@ border: 5px solid #ddd;
     width: 22%;
 }
 
+.movie_trailer {
+    width: 22%;
+}
+
 .movie_delete a {
     text-decoration: none;
     color: #FF0000;

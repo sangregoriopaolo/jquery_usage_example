@@ -54,7 +54,12 @@ $db = connect();
 		?>
 		</select>
 		<input type="submit" value="update" />
+		<?php
+		if($_GET['cat']!=-1)
+			echo "<a href='delete_category.php?id=".$_GET['cat']."'>Delete this Category</a>";
+		 ?>
 	</form>
+	
 	</div>
 	
 	
@@ -64,8 +69,9 @@ $db = connect();
         <tr>
             <th class="movie_title">Title</th>
             <th class="movie_category">Category</th>
-            <th class="movie_dettails">Dettails</th>
+            <th class="movie_dettails">Dettails/Edit</th>
             <th class="movie_image">Image</th>
+			<th class="movie_trailer">Trailer</th>
             <th class="movie_delete">Delete</th>
         </tr>
         <?php 
@@ -80,8 +86,9 @@ $db = connect();
         <tr class="movie_row">
             <td class="movie_title"><?php echo $film['title'] ?></td>
             <td class="movie_category"><?php echo $film['name']; ?></td>
-            <td class="movie_dettails"><a href='dettails.php?id=<?php echo $film['movie_id'] ?>'>Dettails</a></td>
+            <td class="movie_dettails"><a href='dettails.php?id=<?php echo $film['movie_id'] ?>'>Dettails/Edit</a></td>
             <td class="movie_image"><a href='image.php?url=<?php echo $film['image'] ?>'>View image</a></td>
+			<td class="movie_trailer"><a href='trailer.php?url=<?php echo $film['trailer_url'] ?>'>View trailer</a></td>
             <td class="movie_delete"><a href="delete_movie.php?movie_id=<?php echo $film['movie_id'] ?>">x</a></td>
         </tr>
         <?php } ?>
