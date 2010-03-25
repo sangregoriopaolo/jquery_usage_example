@@ -16,8 +16,13 @@ include('./includes/config.php');
 	$director = $db->escapeString($_POST['director']);
 	$producer = $db->escapeString($_POST['producer']);
 	$cat = $db->escapeString($_POST['category']);
+	
+	if($_POST['fav']=='on')
+	 $fav=1;
+	else
+	 $fav=0;
  //save update
- $query="UPDATE movies SET title='$title', description='$description', trailer_url='$trailer_url', image='$image',director='$director',producer='$producer',category_id='$cat' WHERE id=".$id;
+ $query="UPDATE movies SET title='$title', description='$description', trailer_url='$trailer_url', image='$image',director='$director',producer='$producer',category_id='$cat',favourite='$fav' WHERE id=".$id;
  $db->query($query);
  
   header('Location: list_movies.php?cat=-1&fav=0');
@@ -86,11 +91,16 @@ include('./includes/config.php');
 					}
 					?>
 				</select>
-				<a href="add_category.php">Add Category</a>
+				<!--<a href="add_category.php?page=dettails.php?id=<?php echo $id?>">Add Category</a>-->
             </li>
 			<li>
 			  <label for='fav'>Favourite</label>
-			  <INPUT TYPE="CHECKBOX" NAME="fav" />Favourite?
+			  <?php
+			  if($film['favourite']==1)
+				echo '<input type="checkbox" name="fav" checked="checked"/>Favourite?';
+			  else
+				echo '<input type="checkbox" name="fav" />Favourite?';
+			  ?>
 			</li>
             <li>
                 <label for="movie_trailer_url">Trailer URL</label><br>

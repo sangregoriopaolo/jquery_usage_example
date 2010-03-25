@@ -15,8 +15,12 @@ if($action == 'Save') {
 	$director = $db->escapeString($_POST['director']);
 	$producer = $db->escapeString($_POST['producer']);
 	$cat = $db->escapeString($_POST['category']);
+	if($_POST['fav']=='on')
+	 $fav=1;
+	else
+	 $fav=0;
     
-    if($db->exec("INSERT INTO movies (title, description, trailer_url, image,director,producer,category_id) VALUES ('$title', '$description', '$trailer_url', '$image_url','$director','$producer',$cat)"))
+    if($db->exec("INSERT INTO movies (title, description, trailer_url, image,director,producer,category_id,favourite) VALUES ('$title', '$description', '$trailer_url', '$image_url','$director','$producer',$cat,$fav)"))
     {
         header('Location: list_movies.php?saved=1&cat=-1&fav=0');
     }
@@ -86,8 +90,12 @@ else
 					}
 					?>
 				</select>
-				<a href="add_category.php">Add Category</a>
+				<a href="add_category.php?page=add_movie">Add Category</a>
             </li>
+			<li>
+			  <label for='fav'>Favourite</label>
+			  <input type="checkbox" name="fav" />Favourite?
+			</li>
             <li>
                 <label for="movie_trailer_url">Trailer URL</label><br>
                 <input type="text" name="movie_trailer_url" />

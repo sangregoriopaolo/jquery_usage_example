@@ -8,10 +8,11 @@ $name=$_POST['name'];
 if(isset($name))
 {
  $query="INSERT INTO categories ('name') VALUES ('$name')";
+ echo $_GET['page'];
  if($db->query($query))
    header('Location: add_movie.php');
   else
-   header('Location: list_movies.php?err=1');
+   header('Location: list_movies.php?err=1&cat=-1&fav=0');
 
 }
 
