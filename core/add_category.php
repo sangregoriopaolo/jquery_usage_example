@@ -17,11 +17,14 @@ if(isset($name))
 }
 
 disconnect($db);
-include('include/header.php');
+include('includes/header.php');
 ?>
 <form action="add_category.php" method="post">
  <label for="name">Category name</label>
  <input type="text" name="name" />
  <br>
+ <br>
  <input type="submit" value="Save" />
+ <input type="button" value="return" onclick="javascript:history.back();" />
 </form>
+<?php include ('includes/foote.php'); ?>

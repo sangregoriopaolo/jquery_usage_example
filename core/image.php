@@ -1,14 +1,11 @@
 <?php
-include('includes/config.php');
-
-#Connecting to the database
-$db = connect();
 
 $url=$_GET['url'];
 
-disconnect($db);
-
+include ("includes/header.php");
 ?>
-<img src='<?php echo $url;?>' />
-<br>
-<a href="list_movies.php?cat=-1&fav=0">Return</a>
+<center>
+ <img src='<?php echo $url;?>' />
+ <br>
+ <input type="button" value="return" onclick="javascript:history.back();" />
+</center>

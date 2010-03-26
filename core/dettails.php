@@ -111,6 +111,7 @@ include('./includes/config.php');
                 <input type="text" name="movie_image_url" value="<?php echo $film['image'];?>"/>
             </li>
             <li id="submit_container">
+				<input type="button" value="return" onclick="javascript:history.back();" />
                 <input type="submit" name="action" value="Save" />
             </li>
         </ul>
