@@ -1,24 +1,16 @@
 /*
-sidebar foating on right of container
+scroll sidebar container
 */
-#wrap #container #sidebar{
-	position: relative;
-	float: right;
-	margin-right:-150px;
-	width: 150px;
-	height: 100%;
-	margin-top: 50px;
-	z-index: 10;
-	display: block;
-}
-
-/*
-no scroll sidebar container
-*/
-#wrap #container #sidebar #sidebarWrap{
-	position: relative;
+#wrap #container  #sidebarWrap{
+	/*position: relative;
 	margin-top: 0px;
+	width: 150px;*/
+	margin-top:50px;
+	position: relative;
 	width: 150px;
+	margin-right: -150px;
+	float: right;
+	z-index: 10;
 }
 
 /*

@@ -35,11 +35,9 @@
 				
 			<div id="container">
 
-				<div id="sidebar">
-					<div id="sidebarWrap">
-					  <div class="sidebarButton sidebarActive" ref="0" title="My Film"><span class="sidebarButtonText">My Film</span></div>
-					  <div class="sidebarButton" ref="1" title="Favourites"><span class="sidebarButtonText">Favourites</span></div>
-					</div>
+				<div id="sidebarWrap">
+					<div class="sidebarButton sidebarActive" ref="0" title="My Film"><span class="sidebarButtonText">My Film</span></div>
+					<div class="sidebarButton" ref="1" title="Favourites"><span class="sidebarButtonText">Favourites</span></div>
 				</div>
 				<!--end sidebar-->
 				

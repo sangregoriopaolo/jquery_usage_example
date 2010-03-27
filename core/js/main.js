@@ -154,12 +154,14 @@
 	});*/
 	
 	//scroll bar
-	var base=$("#sidebarWrap").offset().top-10;
+	var base=$("#sidebarWrap").offset().top;
 	$(window).scroll(function(){
+	
 		var offset=$(window).scrollTop();
-		var sp=offset-base;
+		var sp=(offset-base)+60;
+		//alert(base+" "+offset+" "+sp);
 		if(sp<0)
-		  sp=0;
+		  sp=50;
 		$("#sidebarWrap").stop().animate({"margin-top": sp,},500);
 	});
 	
