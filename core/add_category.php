@@ -27,4 +27,4 @@ include('includes/header.php');
  <input type="submit" value="Save" />
  <input type="button" value="return" onclick="javascript:history.back();" />
 </form>
-<?php include ('includes/foote.php'); ?>
+<?php include ('includes/footer.php'); ?>
